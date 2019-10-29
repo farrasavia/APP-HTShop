@@ -8,7 +8,11 @@ const routes = [
       { path: 'Berhasil', component: () => import('pages/Error404.vue') }
 
     ]
-  }
+  },
+  {
+    path: '/admin',
+    component: () => import('pages/admin/login.vue'),
+    },
 ]
 
 // Always leave this as last one
