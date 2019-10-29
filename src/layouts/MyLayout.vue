@@ -17,9 +17,9 @@
         <q-toolbar-title id="stick">
         <img src="~/assets/logo2.jpg">
         </q-toolbar-title>
-        <q-btn color="black" label="Semua Barang" flat class="q-ms-sm" id="katalog">
+        <q-btn color="black" label="Semua Barang" flat class="q-mx-sm" id="katalog">
         </q-btn>
-        <q-btn color="black" label="Kategori" flat class="q-ms-sm" id="kategori">
+        <q-btn color="black" label="Kategori" flat class="q-mx-sm" id="kategori">
           
           <q-menu
           transition-show="rotate"
