@@ -20,6 +20,7 @@
         <q-btn color="black" label="Semua Barang" flat class="q-ms-sm" id="katalog">
         </q-btn>
         <q-btn color="black" label="Kategori" flat class="q-ms-sm" id="kategori">
+          
           <q-menu
           transition-show="rotate"
           transition-hide="rotate"
@@ -43,10 +44,17 @@
           </q-list>
         </q-menu>
         </q-btn>
-        
-        
+        <q-input
+        class=" src bg-white q-mr-xl"
+        v-model="search"
+        filled
+        placeholder="Search">
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
         <q-btn style= "color : black" label="Login"  flat class="q-ms-sm">
-      <q-menu  
+          <q-menu  
           transition-show="rotate"
           transition-hide="rotate">
         <div class="row no-wrap q-pa-md" id ="form">
@@ -57,14 +65,14 @@
              class="q-gutter-md"
            >
             <q-input
-        filled
-        v-model="username"
-        label="Your username *"
-        hint="username login data"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'Please type something']"
-      />
-           <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" hint="Password don't let anyone know it">
+            filled
+            v-model="username"
+            label="Masukkan Email *"
+            hint="Email"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Masukkan Email']"
+          />
+           <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" label="Password *" hint="Password">
         <template v-slot:append>
           <q-icon
             :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -185,6 +193,11 @@
 #stick{
   position: sticky
 }
+.src{
+        width: 400px;
+        height: 15px;
+        margin-right:600px;
+    }
 </style>
 
 

@@ -50,6 +50,7 @@
 <style lang="stylus">
 #font {
     font-size : 30px;
+    margin-top: 5%;
     color: red
   }
 #form {
