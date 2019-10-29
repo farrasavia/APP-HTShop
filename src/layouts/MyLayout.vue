@@ -45,12 +45,12 @@
         </q-menu>
         </q-btn>
         <q-input
-        class=" src bg-white q-mr-xl"
+        class="src bg-white q-mr-xl"
         v-model="search"
         filled
         placeholder="Search">
         <template v-slot:append>
-          <q-icon name="search" />
+          <q-icon name="search"/>
         </template>
       </q-input>
         <q-btn style= "color : black" label="Login"  flat class="q-ms-sm">
@@ -186,16 +186,16 @@
   
 }
 
-#search{
+/* #search{
   right: 100px
-}
+} */
 
 #stick{
   position: sticky
 }
 .src{
         width: 400px;
-        height: 15px;
+        max-height: 15px;
         margin-right:600px;
     }
 </style>
