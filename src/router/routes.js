@@ -12,7 +12,11 @@ const routes = [
   {
     path: '/admin',
     component: () => import('pages/admin/login.vue'),
-    },
+  },
+  {
+    path: '/owner',
+    component: () => import('pages/owner/login.vue'),
+  }
 ]
 
 // Always leave this as last one
