@@ -36,6 +36,7 @@
         <div>
           <q-card-section>
           <q-btn class="full-width" color="red"
+          to="/dashboard"
           label="Login"/>
           </q-card-section>
         </div>
