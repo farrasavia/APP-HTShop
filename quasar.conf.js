@@ -44,7 +44,8 @@ module.exports = function (ctx) {
       all: 'auto',
 
       components: [
-        'QMarkupTable'
+        'QMarkupTable',
+        'QOptionGroup',
       ],
       directives: [],
 
