@@ -18,6 +18,7 @@
       <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
     </q-carousel>
     </q-page>
+    <div class="column" style="height: 30px" />
     <q-page>
     <q-card class="my-card" id="kecil">
       <img src="https://cdn.quasar.dev/img/mountains.jpg">
