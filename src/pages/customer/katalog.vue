@@ -11,6 +11,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -19,6 +22,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -27,6 +33,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -35,6 +44,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
     </div>
         <q-item-label id="font" class="q-pa-md">SEMUA PRODUK</q-item-label>
@@ -48,6 +60,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -56,6 +71,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -64,6 +82,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
 
       <div class="col-3">
@@ -72,6 +93,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -79,6 +103,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -86,6 +113,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -93,6 +123,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -100,6 +133,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -107,6 +143,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -114,6 +153,9 @@
            Rp 20.000 
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -121,6 +163,9 @@
            Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
       <div class="col-3">
         <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
@@ -128,6 +173,9 @@
             Rp 20.000
           </div>
         </q-img>
+        <q-card-section class="bg-white">
+        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-card-section>
       </div>
     </div>
         <div class="q-pa-lg flex flex-center">
