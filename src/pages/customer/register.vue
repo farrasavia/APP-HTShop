@@ -4,7 +4,7 @@
   <q-parallax class="fullscreen" :height="730"
     src="https://cdn.quasar.dev/img/parallax2.jpg"
   >
-    <div id="form" class="flex flex-center" style="max-width: 400px">
+    <div id="form" class="row flex flex-center" style="max-width: 400px">
       <q-card style="width:300px">
       <q-form
         @submit="onSubmit"

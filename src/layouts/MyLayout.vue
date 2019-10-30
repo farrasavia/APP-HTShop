@@ -1,6 +1,6 @@
 <template>
 
-  <q-layout view="hhh lpR fff" class="bg-grey-5">
+  <q-layout view="hhh lpR fff" class="bg-grey-4">
     
     
     <q-header elevated>
@@ -184,11 +184,11 @@
             <div class="col-1 q-gutter-xl"/>
             <div class="col-3">
               <div class="text-left text-overline">TENTANG KAMI</div>
-              <div class="text-left text-caption">Dalam NAH Project, kami bertujuan untuk mengacaukan </div>
-              <div class="text-left text-caption">sepatu miliaran dolar dengan bersikap transparan, </div>
-              <div class="text-left text-caption">Anda harga yang wajar menggunakan model langsung </div>
-              <div class="text-left text-caption">konsumen, dan mengembalikan semangat dan kreativitas</div>
-              <div class="text-left text-caption">dengan menjadi berani untuk mengeksplorasi.</div>
+              <div class="text-left text-caption">Kami Hadir Untuk Membuktikan Kesamaan Pemikiran </div>
+              <div class="text-left text-caption">Bahwa Kami Bisa Disini dan Menyamakan Sebuah Pikiran </div>
+              <div class="text-left text-caption">Serta Dengan Adanya Kesamaan Pemikiran Membuktikan </div>
+              <div class="text-left text-caption">Bahwa Kami Memang Ada Disini dan Membuktikannya</div>
+              <div class="text-left text-caption">HTShop Solusi Terbaik Menyamakan Pemikiran</div>
             </div>
             <div class="col-2"/>
             <div class="col-2">
@@ -224,7 +224,7 @@
             <div class="row">
               <div class="col-1 q-gutter-xl "/>
               <div class="col1">
-                <div class="text-left text-overline">@TGProject</div>
+                <div class="text-left text-overline">@Half-Twelve</div>
               </div>
               <div class="col-10"/>
               <div class="col-auto justify-end">
