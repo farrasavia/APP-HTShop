@@ -51,6 +51,7 @@
             />
           </template>
         </q-input>
+        </q-card-section>
         <q-card-section>
         <q-input
           filled
@@ -61,7 +62,7 @@
           :rules="[ val => val && val.length > 0 || 'Masukkan Telepon']"
         />
         </q-card-section>
-        </q-card-section>
+        
         <div>
           <q-card-section>
           <q-btn class="full-width" color="red"
@@ -88,8 +89,11 @@
 export default {
     data () {
     return {
+      nama : "",
       username: "",
+      email:"",
       password: "",
+      telepon:"",
       isPwd: true
     }
   },
