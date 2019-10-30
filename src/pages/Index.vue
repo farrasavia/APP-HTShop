@@ -18,6 +18,7 @@
       <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
     </q-carousel>
     </q-page>
+    <q-item-label id="font" class="flex flex-center">PRODUK TERBARU</q-item-label>
     <div class="column" style="height: 30px" />
     <q-page>
     <div class=" row items-start">
@@ -85,6 +86,11 @@
   }
   #besar{
     height:650px
+  }
+  #font {
+    font-size : 25px;
+    margin-top: 3%;
+    color: black
   }
   </style>
 
