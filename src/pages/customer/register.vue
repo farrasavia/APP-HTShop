@@ -4,13 +4,16 @@
   <q-parallax class="fullscreen" :height="730"
     src="https://cdn.quasar.dev/img/parallax2.jpg"
   >
-    <div id="form" class="flex flex-center" style="max-width: 400px">
-      <q-card style="width:300px">
+    <div id="form" class="flex flex-center" style="max-width: 700px">
+      <q-card style="width:700px; height: 275px " >
       <q-form
         @submit="onSubmit"
         class="q-gutter-md"
       >
+     
         <q-card-section>
+           <div class="row">
+          <div class="col q-ma-sm">
         <q-input
           filled
           v-model="nama"
@@ -19,8 +22,8 @@
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Masukkan Nama']"
         />
-        </q-card-section>      
-        <q-card-section>
+             
+        
         <q-input
           filled
           v-model="username"
@@ -29,8 +32,8 @@
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Masukkan Username']"
         />
-        </q-card-section>
-        <q-card-section>
+        
+        
         <q-input
           filled
           v-model="email"
@@ -39,8 +42,9 @@
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Masukkan Email']"
         />
-        </q-card-section>
-        <q-card-section>
+          </div>
+        
+       <div class="col q-ma-sm">
         <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" 
         hint="Password" label="Masukkan Password *">
           <template v-slot:append>
@@ -51,29 +55,29 @@
             />
           </template>
         </q-input>
-        </q-card-section>
-        <q-card-section>
+        
+       
         <q-input
           filled
           v-model="telepon"
           label="Masukkan Telepon *"
           hint="Telepon"
           lazy-rules
+          style="padding-top: 20px"
           :rules="[ val => val && val.length > 0 || 'Masukkan Telepon']"
         />
-        </q-card-section>
-        
-        <div>
-          <q-card-section>
-          <q-btn class="full-width" color="red"
+        <div style="padding-top: 20px"/> 
+        <q-btn class="full-width" color="red"
           label="Register"/>
-          </q-card-section>
-          <q-item-label id="font" class="flex flex-center">OR</q-item-label>
-          <q-card-section>
+          
+          <!-- <q-item-label id="font" class="flex flex-center">OR</q-item-label>
+         
           <q-btn class="full-width" color="red"
-          label="Register"/>
+          label="Login"/> -->
+       </div>
+           </div>
           </q-card-section>
-        </div>
+       
       </q-form>
       </q-card>
     </div>

@@ -17,7 +17,7 @@
         <q-toolbar-title id="stick">
         <img src="~/assets/logo2.jpg">
          </q-toolbar-title>
-         
+
     <div id="search">
         <q-input
         
@@ -66,6 +66,7 @@
               push
               size="md"
               flat class="q-ms"
+              to = "register"
             />
             </q-form>
              
