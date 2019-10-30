@@ -13,15 +13,18 @@
       id=""
     >
       <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+      <q-carousel-slide :name="2" img-src="./statics/1.jpg" />
       <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
       <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
     </q-carousel>
     </q-page>
     <q-page>
-    <q-card class="my-card" id="kecil">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg">
-
+    <div class=" row items-start">
+    <div class=" col-4">
+    <q-card class="my-card q-mx-auto" id="kecil">
+      <img src="https://cdn.quasar.dev/img/mountains.jpg"
+        style="width: 100%"
+      >    
       <q-card-section class="">
         <div class="text-h6">Our Changing Planet</div>
         <div class="text-subtitle2">by John Doe</div>
@@ -32,10 +35,41 @@
         
       </q-card-section>
     </q-card>
+    </div>
+    <div class="col-4">
+    <q-card class="my-card q-mx-auto" id="kecil">
+      <img src="https://cdn.quasar.dev/img/mountains.jpg"
+      style="width: 100%"
+      >
+      <q-card-section class="">
+        <div class="text-h6">Our Changing Planet</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
+
+      <q-card-section>
+        <q-btn flat round color="Black" icon="fas fa-cart-plus"/>
+        
+      </q-card-section>
+    </q-card>
+    </div>
+    <div class="col-4">
+    <q-card class="my-card q-mx-auto" id="kecil">
+      <img src="https://cdn.quasar.dev/img/mountains.jpg"
+      style="width: 100%"
+      >
+      <q-card-section class="">
+        <div class="text-h6">Our Changing Planet</div>
+        <div class="text-subtitle2">by John Doe</div>
+      </q-card-section>
+
+      <q-card-section>
+        <q-btn flat round color="Black" icon="fas fa-cart-plus"/>
+        
+      </q-card-section>
+    </q-card>
+    </div>
+    </div>
   </q-page>
-  
-
-
   </div>
   </template>
   

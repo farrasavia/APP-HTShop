@@ -68,6 +68,11 @@
           <q-btn class="full-width" color="red"
           label="Register"/>
           </q-card-section>
+          <q-item-label id="font" class="flex flex-center">OR</q-item-label>
+          <q-card-section>
+          <q-btn class="full-width" color="red"
+          label="Register"/>
+          </q-card-section>
         </div>
       </q-form>
       </q-card>
@@ -78,6 +83,11 @@
 </template>
 
 <style lang="stylus">
+#font {
+    font-size : 16px;
+        margin-top: 0%;
+    color: red
+  }
 
 #form {
     margin-top: 0%;
