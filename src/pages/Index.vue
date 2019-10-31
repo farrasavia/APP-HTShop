@@ -2,23 +2,27 @@
   <div class="q-pa-md">
     <q-page>
     <q-carousel
+      style="max-height:500px"
       animated
-      arrows
       v-model="slide"
+      thumbnails
+      arrows
       infinite
       autoplay
-      thumbnails
-      transition-prev="rotate-right"
+      transition-prev="slide-right"
       transition-next="slide-left"
-      id=""
     >
-      <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-      <q-carousel-slide :name="2" img-src="./statics/1.jpg" />
-      <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-      <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+      <q-carousel-slide :name="1" img-src="./statics/a.jpeg" />
+      <q-carousel-slide :name="2" img-src="./statics/b.jpeg" />
+      <q-carousel-slide :name="3" img-src="./statics/z.jpeg" />
+      <q-carousel-slide :name="4" img-src="./statics/c.jpeg" />
     </q-carousel>
     </q-page>
-    <q-item-label id="font" class="flex flex-center">PRODUK TERBARU</q-item-label>
+    <q-card dark bordered class="bg-white bawah">
+      <q-card-section>
+      <div class="text-h4 flex flex-center" style= "color : black" >Produk Terbaru</div>
+      </q-card-section>
+    </q-card>
     <div class="column" style="height: 30px" />
     <q-page>
     <div class=" row items-start">
@@ -75,7 +79,13 @@
   </div>
   </template>
   
-  <<style scoped>
+  <style scoped>
+  .bawah {
+         margin-top: 1%;
+         height: 70px;
+         width: 100%;
+         max-width: auto
+    }
   #caros{
     border: 10px solid rgb(255, 255, 255);
   }
@@ -87,12 +97,7 @@
   #besar{
     height:650px
   }
-  #font {
-    font-size : 25px;
-    margin-top: 3%;
-    color: black
-  }
-  </style>
+</style>
 
 <script>
 export default {
