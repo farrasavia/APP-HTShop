@@ -6,7 +6,8 @@
         <q-toolbar-title id="stick">
         <img src="~/assets/logo2.jpg">
         </q-toolbar-title>
-       </q-toolbar>
+      </q-toolbar>
+
     </q-header>
 
     <q-drawer
