@@ -10,9 +10,9 @@
         infinite
         >
         <q-carousel-slide :name="1" img-src="./statics/rice.jpeg" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-        <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-        <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+        <q-carousel-slide :name="2" img-src="./statics/ricee.jpeg"  />
+        <q-carousel-slide :name="3" img-src="./statics/riceee.jpeg"  />
+        <q-carousel-slide :name="4" img-src="./statics/riceeee.jpeg"  />
         </q-carousel>
         <q-card-section class="bg-white">
         <div class="flex flex-center text-h5">Rp 500.000</div>
@@ -27,6 +27,11 @@
         <q-card-section>
           <div id="form" class="q-mx-auto" style="max-width: 900px">
               <q-form class="q-gutter-md">
+                  <q-input 
+                    filled v-model="tanggal" 
+                    type="date" 
+                    hint="Tanggal" 
+                    />
                   <q-input 
                     filled v-model="nama" 
                     label="Masukkan Nama *" 
@@ -60,7 +65,12 @@
                     :rules="[ val => val && val.length > 0 || 'Please type something']" />
                 <q-card-section>
                 <div class="flex flex-center">
-                    <q-btn class="flex flex-center" color="black" label="Pesan Sekarang" />
+                    <q-btn color="grey-6" label="Pesan Sekarang" />
+                </div>
+                </q-card-section>
+                <q-card-section>
+                <div class="flex flex-center">
+                    <q-btn  label="Batal" color="grey-6" @click="batal()" />
                 </div>
                 </q-card-section>
               </q-form>
@@ -175,8 +185,16 @@ export default {
     return {
       slide: 1,
       alert: false,
-      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      
+        form: {
+                nama: '',
+                alamat: '',
+                telepon: '',
+                pengiriman: '',
+                catatan:''
+            },
+        batal() {
+                alert = false
+            }
     }
   }
 }
