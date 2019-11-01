@@ -33,7 +33,7 @@
         </template>
       </q-input>
     </div>
-        <q-btn style= "color : black" label="Login"  flat class="q-ms-sm">
+        <!-- <q-btn style= "color : black" label="Login"  flat class="q-ms-sm">
           <q-menu  
           transition-show="rotate"
           transition-hide="rotate">
@@ -75,13 +75,13 @@
           </div>
           </div>
       </q-menu>
-    </q-btn>
+    </q-btn> -->
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
        <div class="column" style="height: 10px"/>
 
         
-        <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="customer/katalog">
+        <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="katalog">
         </q-btn>
         <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
           
@@ -260,9 +260,6 @@
   padding-bottom: 20px
 } 
 
-#stick{
-  position: sticky
-}
 /* .src{
         width: 400px;
         max-height: 15px;
@@ -273,34 +270,12 @@
 
 
 <script>
-import login_api from '../api/Login/index'
 export default {
   data () {
     return {
-      username: "",
-      password: "",
-      isPwd: true,
-
-      accept: false
+     
     }
   },
 
-  methods: {
-    onSubmit () {
-        let self = this;
-        login_api
-            .userLogin(window, self.username, self.password)
-            .then(function(result){
-                console.log(result)
-                if (result){
-                    self.$router.push("/Katalog");
-                }
-            })
-            .catch(function(err){
-                console.log(err)
-            });
-    
-      }
-    },
 }
 </script>

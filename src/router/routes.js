@@ -5,13 +5,20 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'Berhasil', component: () => import('pages/Error404.vue') },
       { path: 'register', component: () => import('pages/customer/register.vue') },
-      { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
-      { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') }
+      { path: 'err', component: () => import('pages/Error404.vue') }
     ]
   },
-  
+  {
+    path: '/customer',
+    
+    component:()=> import('layouts/CustomerLayout.vue'),
+    children:[
+    
+    { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
+    { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') }
+    ]
+  },
   {
     path: '/dashboard',
      component: () => import('layouts/AdminLayout.vue'),
