@@ -51,8 +51,8 @@
                     lazy-rules 
                     :rules="[ val => val && val.length > 0 || 'Please type something']" />
                 <div class="q-gutter-sm">
-                    <q-radio v-model="pengiriman" val="jne" label="JNE Express" color="black" />
-                    <q-radio v-model="pengiriman" val="paxel" label="Paxel" color="black" />
+                    <q-radio v-model="pengiriman" val="JNE Express" label="JNE Express" color="black" />
+                    <q-radio v-model="pengiriman" val="Paxel Express" label="Paxel Express" color="black" />
                     </div>
                     <div class="q-px-sm q-mt-sm">
                     Jasa Pengiriman : <strong>{{pengiriman}}</strong>
@@ -119,42 +119,48 @@
     <q-card dark bordered class="bg-white">
     <div class="q-col-gutter-md row items-start">
       <div class="col-4">
+        <q-card-section class="a bg-white">
         <q-img
-          src="https://cdn.quasar.dev/img/parallax2.jpg"
+          src="../statics/mejikom1.jpg"
           style="width: 100%"
         >
           <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
+            Rp 200.000
           </div>
         </q-img>
+        </q-card-section>
         <q-card-section class="a bg-white">
-        <div class="flex flex-center text-h6" style= "color : black">Rice Cooker Cosmos RC2001</div>
+        <div class="flex flex-center text-h6" style= "color : black">Rice Cooker Miyako MCM687</div>
         </q-card-section>
       </div>
       <div class="col-4">
+        <q-card-section class="a bg-white">
         <q-img
-          src="https://cdn.quasar.dev/img/parallax2.jpg"
+          src="../statics/mixer.jpg"
           style="width: 100%"
         >
           <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
+            Rp 320.000
           </div>
         </q-img>
+        </q-card-section>
         <q-card-section class="a bg-white">
-        <div class="flex flex-center text-h6" style= "color : black">Rice Cooker Cosmos RC2001</div>
+        <div class="flex flex-center text-h6" style= "color : black">Mixer Philips HD 1552</div>
         </q-card-section>
       </div>
       <div class="col-4">
+        <q-card-section class="a bg-white">
         <q-img
-          src="https://cdn.quasar.dev/img/parallax2.jpg"
+          src="../statics/blender.jpg"
           style="width: 100%"
         >
           <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
+            Rp 250.000
           </div>
         </q-img>
+        </q-card-section>
         <q-card-section class="a bg-white">
-        <div class="flex flex-center text-h6" style= "color : black">Rice Cooker Cosmos RC2001</div>
+        <div class="flex flex-center text-h6" style= "color : black">Blender Philips HL 1606</div>
         </q-card-section>
       </div>
     </div>
