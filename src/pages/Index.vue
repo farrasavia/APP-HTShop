@@ -79,7 +79,7 @@
   </div>
   </template>
   
-  <style scoped>
+<style scoped>
   .bawah {
          margin-top: 1%;
          height: 70px;
