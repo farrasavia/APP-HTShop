@@ -63,3 +63,9 @@
     border:15px solid #4682B4;
   }
 </style>
+
+<script>
+export default {
+ 
+}
+</script>

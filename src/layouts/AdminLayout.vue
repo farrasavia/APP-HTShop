@@ -26,6 +26,14 @@
             <q-item-label>Dashboard</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item clickable tag="a" href="/#/dashboard/inputbarang">
+          <q-item-section avatar>
+            <q-icon name="add_shopping_cart" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Input Barang</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item clickable tag="a" href="/#/login">
           <q-item-section avatar>
             <q-icon name="assignment" />
