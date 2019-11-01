@@ -2,7 +2,7 @@
 <div class="q-pa-md q-gutter-md">
 <div class="row justify-between">
   <q-parallax class="fullscreen" :height="730"
-    src="https://cdn.quasar.dev/img/parallax2.jpg"
+    src="../statics/admin.jpg"
   >
     <div id="form" class="flex flex-center" style="max-width: 300px">
       <q-card style="width:300px">
@@ -35,7 +35,7 @@
         </q-card-section>
         <div>
           <q-card-section>
-          <q-btn class="full-width" color="red"
+          <q-btn class="full-width" color="blue-grey-10"
           to="/dashboard"
           label="Login"/>
           </q-card-section>
@@ -52,12 +52,12 @@
 #font {
     font-size : 30px;
     margin-top: 5%;
-    color: red
+    color: #37474f
   }
 #form {
     margin-top: 0%;
     margin-left: 5%;
-    border:15px solid #4682B4;
+    border:15px solid #37474f;
   }
 </style>
 <script>

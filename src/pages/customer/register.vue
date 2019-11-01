@@ -2,7 +2,7 @@
 <div class="q-pa-md q-gutter-md">
 <div class="row justify-between">
   <q-parallax class="fullscreen" :height="730"
-    src="https://cdn.quasar.dev/img/parallax2.jpg"
+    src="../../statics/bgregis.jpg"
   >
     <div id="form" class="flex flex-center" style="max-width: 700px">
       <q-card style="width:700px; height: 275px " >
@@ -94,9 +94,9 @@
   }
 
 #form {
-    margin-top: 0%;
+    margin-top: 4%;
     margin-left: 5%;
-    border:15px solid #4682B4;
+    border:15px solid #000000;
   }
 </style>
 <script>
