@@ -22,67 +22,66 @@
       <q-card-section>
       <div class="text-h4 flex flex-center" style= "color : black" >Produk Terbaru</div>
       </q-card-section>
-    </q-card>
+
     <div class="column" style="height: 30px" />
     <q-page>
     <div class=" row items-start">
     <div class=" col-4">
-    <q-card class="my-card q-mx-auto" id="kecil">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg"
-        style="width: 100%"
+    <q-card class="my-card bg-grey-5 q-mx-auto" id="kecil">
+      <img src="../statics/blender.jpg"
       >    
-      <q-card-section class="">
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+      <q-card-section class="bg-grey-5">
+        <div class="text-h6 flex flex-center" style="color: black">Blender Philips</div>
+        <div class="text-subtitle2 flex flex-center h4" style="color: black">Rp 175.000</div>
       </q-card-section>
 
-      <q-card-section>
-        <q-btn flat round color="Black" icon="fas fa-cart-plus"/>
+      <q-card-section class="bg-grey-5 flex flex-center">
+        <q-btn flat round style="color: Black"  icon="fas fa-cart-plus"/>
         
       </q-card-section>
     </q-card>
     </div>
     <div class="col-4">
-    <q-card class="my-card q-mx-auto" id="kecil">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg"
-      style="width: 100%"
+    <q-card class="my-card bg-grey-5 q-mx-auto" id="kecil">
+      <img src="../statics/panci.jpg"
       >
-      <q-card-section class="">
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+      <q-card-section class="bg-grey-5">
+        <div class="text-h6 flex flex-center" style="color: black">Panci Teflon Maspion</div>
+        <div class="text-subtitle2 flex flex-center" style="color: black">Rp 150.000</div>
       </q-card-section>
 
-      <q-card-section>
-        <q-btn flat round color="Black" icon="fas fa-cart-plus"/>
+      <q-card-section class="bg-grey-5 flex flex-center">
+        <q-btn flat round style="color: Black"  icon="fas fa-cart-plus"/>
         
       </q-card-section>
     </q-card>
     </div>
     <div class="col-4">
-    <q-card class="my-card q-mx-auto" id="kecil">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg"
+    <q-card class="my-card bg-grey-5 q-mx-auto" id="kecil">
+      <img src="../statics/mejikom.jpg"
       style="width: 100%"
       >
-      <q-card-section class="">
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+      <q-card-section class="bg-grey-5">
+        <div class="text-h6 flex flex-center" style="color: black">Rice Cooker Young Ma</div>
+        <div class="text-subtitle2 flex flex-center" style="color: black">Rp 200.000</div>
       </q-card-section>
 
-      <q-card-section>
-        <q-btn flat round color="Black" icon="fas fa-cart-plus"/>
+      <q-card-section class="bg-grey-5 flex flex-center">
+        <q-btn flat round style="color: Black" icon="fas fa-cart-plus"/>
         
       </q-card-section>
     </q-card>
     </div>
     </div>
   </q-page>
+  </q-card>
   </div>
   </template>
   
 <style scoped>
   .bawah {
          margin-top: 1%;
-         height: 70px;
+         height: 700px;
          width: 100%;
          max-width: auto
     }

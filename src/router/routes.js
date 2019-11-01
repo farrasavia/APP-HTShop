@@ -14,7 +14,6 @@ const routes = [
     
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
-    
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
     { path: 'kpp', component: () => import('pages/customer/kpp.vue') },
     { path: 'pisau', component: () => import('pages/customer/pisau.vue') },
