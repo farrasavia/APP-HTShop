@@ -47,7 +47,8 @@ module.exports = function (ctx) {
         'QMarkupTable',
         'QOptionGroup',
         'QUploader',
-        'QDate'
+        'QDate',
+        'QForm'
       ],
       directives: [],
 
