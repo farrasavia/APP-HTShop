@@ -14,7 +14,6 @@ const routes = [
     
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
-    
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
     { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') },
       { path: 'akhir', component: () => import('pages/customer/akhir.vue') }
