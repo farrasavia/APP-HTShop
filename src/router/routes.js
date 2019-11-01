@@ -16,6 +16,11 @@ const routes = [
     children:[
     
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
+    { path: 'kpp', component: () => import('pages/customer/kpp.vue') },
+    { path: 'pisau', component: () => import('pages/customer/pisau.vue') },
+    { path: 'rice', component: () => import('pages/customer/rice.vue') },
+    { path: 'blender', component: () => import('pages/customer/blender.vue') },
+    { path: 'kulkas', component: () => import('pages/customer/kulkas.vue') },
     { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') },
       { path: 'akhir', component: () => import('pages/customer/akhir.vue') }
     ]

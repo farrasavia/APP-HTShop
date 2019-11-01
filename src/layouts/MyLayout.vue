@@ -90,23 +90,23 @@
           transition-hide="rotate"
         >
           <q-list style="min-width: 100px">
-            <q-item clickable>
-              <q-item-section>Blender</q-item-section>
+            <q-item clickable to = "customer/blender">
+              <q-item-section >Blender</q-item-section>
             </q-item>
              <q-separator />
-            <q-item clickable>
+            <q-item clickable  to = "customer/kulkas">
               <q-item-section>Kulkas</q-item-section>
             </q-item>
             <q-separator />
-            <q-item clickable>
+            <q-item clickable to = "customer/kpp">
               <q-item-section>Kompor, Penggorengan, & Panci</q-item-section>
             </q-item>
             <q-separator />
-            <q-item clickable>
+            <q-item clickable to = "customer/pisau">
               <q-item-section>Pisau</q-item-section>
             </q-item>
             <q-separator />
-            <q-item clickable>
+            <q-item clickable to = "customer/rice">
               <q-item-section>Rice Cooker</q-item-section>
             </q-item>
           </q-list>
