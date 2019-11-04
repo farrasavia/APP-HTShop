@@ -1,7 +1,7 @@
 import axios from 'axios'
  
 const API_URL =  'http://localhost:3000/api/'
-const API_URL_SB =  'http://localhost:8888/api/v1/customer'
+const API_URL_SB =  'http://localhost:8080/api/v9'
 
 export function getApiNoAuth() {
     return axios.create({
@@ -15,13 +15,13 @@ export function getApiNoAuth() {
     })
 }
 
-export function getApicUSTOMER() {
+export function getApiCustomer() {
     return axios.create({
         baseURL: API_URL_SB,
         timeout: 10000,
-        withCredentials: true,
+        withCredentials: false,
         headers: {
-            'Acces-Control-Allow-Origin': '*',
+            'Acces-Control-Allow-Origin': 'http://localhost:8080',
             'Content-Type': 'application/json'
         }
     })

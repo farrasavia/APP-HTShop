@@ -293,7 +293,7 @@ export default {
             .then(function(result){
                 console.log(result)
                 if (result){
-                    self.$router.push("/Katalog");
+                    self.$router.push("/customer/katalog");
                 }
             })
             .catch(function(err){

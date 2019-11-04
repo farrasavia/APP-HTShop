@@ -13,9 +13,9 @@
         <q-card-section>
         <q-input
           filled
-          v-model="username"
-          label="Your Username *"
-          hint="Username"
+          v-model="email"
+          label="Email *"
+          hint="Masukkan Email"
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something']"
         />
@@ -65,7 +65,32 @@
 </style>
 
 <script>
+import login from '../api/Login/index'
 export default {
- 
+  data (){
+    return{
+      email:"",
+      password:""
+    }
+  },
+
+  methods:{
+    onSubmit(){
+      let self=this;
+      login
+      .userLogin(window, self.email, self.password)
+      .then(function(result)
+        {
+          console.log(result);
+          if(result){
+            self.$router.push('/customer')
+          }
+        })
+      .catch(function(err){
+        console.log(err);
+      });
+    }
+  }
+
 }
 </script>

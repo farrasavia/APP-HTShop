@@ -1,13 +1,9 @@
-import { getApiNoAuth } from '../utils'
+import { getApiNoAuth, getApiCustomer } from '../utils'
 
 export default{
-    userLogin(window, username, password) {
-        return getApiNoAuth()
-        .post('Users/login', {
-            username: username,
-            password: password,
-            // role:'customer'
-        })
+    userLogin(window, email, password) {
+        return getApiCustomer()
+        .get('/users/' + email + '/' + password) 
         .then(function(response) {
             console.log(response)
             return response.data
