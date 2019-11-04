@@ -42,7 +42,7 @@
             <q-item-label>Tabel Pemesanan</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" href="/#/login">
+        <q-item clickable tag="a" href="/#/dashboard/tabelbarang">
           <q-item-section avatar>
             <q-icon name="local_grocery_store" />
           </q-item-section>
