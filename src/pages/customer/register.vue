@@ -7,7 +7,7 @@
     <div id="form" class="flex flex-center" style="max-width: 700px">
       <q-card style="width:700px; height: 275px " >
       <q-form
-        @submit="onSubmit"
+        @submit="onSubmit()"
         class="q-gutter-md"
       >
      
@@ -16,21 +16,21 @@
           <div class="col q-ma-sm">
         <q-input
           filled
-          v-model="nama"
-          label="Masukkan Nama *"
-          hint="Nama Pengguna"
+          v-model="firstName"
+          label="Nama Depan *"
+          hint="First Name"
           lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Masukkan Nama']"
+          :rules="[ val => val && val.length > 0 || 'Masukkan Nama Depan']"
         />
              
         
         <q-input
           filled
-          v-model="username"
-          label="Masukkan Username *"
-          hint="Username"
+          v-model="lastName"
+          label="Nama Belakang *"
+          hint="Last Name"
           lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Masukkan Username']"
+          :rules="[ val => val && val.length > 0 || 'Masukkan Nama Belakang']"
         />
         
         
@@ -56,18 +56,8 @@
           </template>
         </q-input>
         
-       
-        <q-input
-          filled
-          v-model="telepon"
-          label="Masukkan Telepon *"
-          hint="Telepon"
-          lazy-rules
-          style="padding-top: 20px"
-          :rules="[ val => val && val.length > 0 || 'Masukkan Telepon']"
-        />
         <div style="padding-top: 20px"/> 
-        <q-btn class="full-width" color="red"
+        <q-btn class="full-width" color="red" type="Register"
           label="Register"/>
           
           <!-- <q-item-label id="font" class="flex flex-center">OR</q-item-label>
@@ -100,16 +90,39 @@
   }
 </style>
 <script>
+import REGISTER_API from '../../api/Register/index'
 export default {
+    name: 'REGISTER_API',
     data () {
     return {
-      nama : "",
-      username: "",
+      firstName : "",
+      lastName: "",
       email:"",
       password: "",
-      telepon:"",
       isPwd: true
     }
   },
+  methods : {
+        onSubmit(){
+            let credentials = {
+              firstName:this.firstName,
+              lastName:this.lastName,
+              email:this.email,
+              password:this.password
+            };
+            const self=this;
+
+            REGISTER_API
+            .registerInput(credentials, window, self.firstName, self.lastName, self.email, self.password)            
+            .then(function(result){
+                console.log(result)
+                if(result)
+                    self.$router.push("/")
+            })
+            .catch(function(error){
+                console.log(error);
+            });
+        }
+    }
 }
 </script>

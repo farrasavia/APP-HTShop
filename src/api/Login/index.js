@@ -1,4 +1,4 @@
-import { getApiNoAuth, getApiCustomer } from '../utils'
+import { getApiCustomer } from '../utils'
 
 export default{
     userLogin(window, email, password) {
