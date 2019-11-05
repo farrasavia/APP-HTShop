@@ -3,6 +3,15 @@
     
     <q-header elevated>
       <q-toolbar>
+         <q-btn
+          flat
+          dense
+          round
+          @click="leftDrawerOpen = !leftDrawerOpen"
+          icon="menu"
+          aria-label="Menu"
+          style="color: black"
+        />
         <q-toolbar-title id="stick">
         <img src="~/assets/logo2.jpg">
         </q-toolbar-title>
@@ -77,7 +86,8 @@
 export default {
     data () {
     return {
-      separator: 'vertical'
+      separator: 'vertical',
+      leftDrawerOpen: true
     }
   }
 }

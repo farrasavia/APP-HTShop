@@ -2,18 +2,18 @@
 <div class="row">
   <div class="coloumn" style="padding-top: 30px; padding-left: 30px">
     <q-card id="size">
-    <commit-chart :data="data" ></commit-chart>
+    <commit-chart :data="data1" ></commit-chart>
     </q-card>
     </div>
   <div class="coloumn" style="padding-top: 30px; padding-left: 30px;">
     <q-card id="size">
-      <donut-chart :data="data"></donut-chart>
+      <donut-chart :data="data2"></donut-chart>
       </q-card>
       </div> 
 
       <div class="coloumn" style="padding-top: 30px; padding-left: 30px">
     <q-card id="size">
-      <pie-chart :data="data"></pie-chart>
+      <pie-chart :data="data1"></pie-chart>
     </q-card>
 </div>
 </div>
@@ -42,13 +42,24 @@ export default {
   },
   data(){
     return{
-      data: {
+      data1: {
         labels: ['Rice Cooker', 'Kulkas', 'Pisau', 'KPP', 'Blender'],
         datasets: [{
           barPercentage: 0.5,
           label: ['Rice Cooker', 'Kulkas', 'Pisau', 'KPP', 'Blender'],
           backgroundColor: ['#f87979', '#3d65bd', '#3d7354', '#000000','#C10015'],
           data: [10,20,30,40,50]
+        }],
+        option: {
+          height: 200
+      }
+    },
+     data2: {
+        labels: ['Pengunjung', 'Pembeli',],
+        datasets: [{
+          label: ['Pengunjung', 'Pembeli'],
+          backgroundColor: ['#f87979', '#3d65bd'],
+          data: [50,30]
         }],
         option: {
           height: 200

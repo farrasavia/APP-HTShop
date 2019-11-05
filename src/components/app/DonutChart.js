@@ -14,7 +14,7 @@ import {
         options: {
           title: {
             display: true,
-            text: 'Pie'
+            text: 'Grafik Pengunjung'
           }
         }
       }
