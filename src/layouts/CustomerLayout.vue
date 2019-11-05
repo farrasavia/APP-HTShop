@@ -33,8 +33,8 @@
         </template>
       </q-input>
     </div>
-        <!-- <q-btn style= "color : black" label="Login"  flat class="q-ms-sm">
-          <q-menu  
+        
+          <!-- <q-menu  
           transition-show="rotate"
           transition-hide="rotate">
         <div class="row no-wrap q-pa-md" id ="form">
@@ -74,10 +74,11 @@
              
           </div>
           </div>
-      </q-menu>
-    </q-btn> -->
+      </q-menu> -->
+    <!-- </q-btn> -->
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
+      <q-separator color="black" style="height:2px"/>
        <div class="column" style="height: 10px"/>
 
         
@@ -111,6 +112,8 @@
             </q-item>
           </q-list>
         </q-menu>
+        </q-btn>
+        <q-btn style= "color : black" label="Logout"  flat class="q-ms-sm" to="/" id="pojok">
         </q-btn>
     </q-header>
 
@@ -259,6 +262,10 @@
   padding-right: 20px;
   padding-bottom: 20px
 } 
+
+#pojok{
+  left: 950px;
+}
 
 /* .src{
         width: 400px;
