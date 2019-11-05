@@ -39,33 +39,33 @@
         </q-item-section>
       </q-item>
 
-      <q-item>
+      <q-item v-for="(barang, index) in barangs" :key="barang.id" class="bg-grey-3" line="1">
         <q-item-section avatar top class="col-1 gt-xm">
-            <q-item-label class="q-mt-sm">1</q-item-label>
+            <q-item-label class="q-mt-sm">{{index+1}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-2   gt-xm" style="align : left">
-            <q-item-label class="q-mt-sm">Panci</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.nama_barang}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-1 gt-xm" style="align : center">
-            <q-item-label class="q-mt-sm">kompor</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.kategori}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-1 gt-xm" style="align : center">
-            <q-item-label class="q-mt-sm">90</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.quantity}}</q-item-label>
         </q-item-section>
         
         <q-item-section top class="col-1 gt-xm" style="align : center">
-            <q-item-label class="q-mt-sm">Rp 750000</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.harga_barang}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-1 gt-xm" style="align : center">
-            <q-item-label class="q-mt-sm">Baru</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.kondisi}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-2 gt-xm" style="align : center">
-            <q-item-label class="q-mt-sm">warna kuning-silver</q-item-label>
+            <q-item-label class="q-mt-sm">{{barang.keterangan}}</q-item-label>
         </q-item-section>
 
         <q-item-section top class="col-2 gt-xm">
@@ -85,12 +85,22 @@
 </style>
 
 <script>
+import baraang from '../../api/admin/getbarang';
 export default {
     data () {
     return {
+      barangs: [{}],
       separator: 'vertical',
       date: '2019-02-01 12:44'
     }
+  },
+  async mounted() {
+        const response = await
+        baraang.getBarang(window) 
+            {
+                this.barangs = response
+            }
   }
+        
 }
 </script>
