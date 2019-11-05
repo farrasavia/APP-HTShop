@@ -25,7 +25,7 @@
     <q-dialog v-model="alert">
       <q-card style="width:500px">
         <q-card-section>
-          <div id="form" class="q-mx-auto" style="max-width: 900px">
+          <div id="form" class="q-mx-auto" style="max-width: 800px">
               <q-form class="q-gutter-md">
                   <q-input 
                     filled v-model="tanggal" 

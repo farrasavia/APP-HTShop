@@ -49,7 +49,7 @@
         </q-card-section>
       </div>
     </div>
-        <q-item-label id="font" class="q-pa-md">SEMUA KOMPOR,PANCI,dan Penggorengan</q-item-label>
+        <q-item-label id="font" class="q-pa-md">Semua Kompor, Panci dan Penggorengan</q-item-label>
     <div class="q-col-gutter-md row items-start">
       <div class="col-3">
         <q-img

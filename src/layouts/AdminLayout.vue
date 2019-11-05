@@ -43,7 +43,7 @@
             <q-item-label>Input Barang</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" href="/#/login">
+        <q-item clickable tag="a" href="/#/dashboard/pemesanan">
           <q-item-section avatar>
             <q-icon name="assignment" />
           </q-item-section>

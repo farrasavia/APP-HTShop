@@ -30,7 +30,8 @@ const routes = [
      children:[
        { path:'', component: () => import('pages/admin/dashboardAdmin.vue')},
        { path: 'tabelbarang', component: () => import('pages/admin/tabelbarang.vue')},
-       { path: 'input', component: () => import('pages/admin/input.vue')}
+       { path: 'input', component: () => import('pages/admin/input.vue')},
+       { path: 'pemesanan', component: () => import('pages/admin/pemesanan.vue')}
      ]
   },
   {
