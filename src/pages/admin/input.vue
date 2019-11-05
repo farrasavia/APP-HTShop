@@ -19,7 +19,7 @@
           <div class="col q-ma-sm">
         <q-input
           filled
-          v-model="form.nama_barang"
+          v-model="nama_barang"
           label="Masukkan Nama Barang*"
           hint="Nama Barang"
           lazy-rules
@@ -27,19 +27,19 @@
         />
         
         <div class="q-gutter-sm">
-        <q-radio v-model="form.kategori" val="Blender" label="Blender" color="black" />
-        <q-radio v-model="form.kategori" val="Pisau" label="Pisau" color="black" />
-        <q-radio v-model="form.kategori" val="Kompor" label="Kompor" color="black" />
-        <q-radio v-model="form.kategori" val="Rice Cooker" label="Rice Cooker" color="black" />
+        <q-radio v-model="kategori" val="Blender" label="Blender" color="black" />
+        <q-radio v-model="kategori" val="Pisau" label="Pisau" color="black" />
+        <q-radio v-model="kategori" val="Kompor" label="Kompor" color="black" />
+        <q-radio v-model="kategori" val="Rice Cooker" label="Rice Cooker" color="black" />
        </div>
         <div class="q-px-sm q-mt-sm">
-        Kategori Barang : <strong>{{form.kategori}}</strong>
+        Kategori Barang : <strong>{{kategori}}</strong>
         </div>
              
       <q-input
         filled
         type="number"
-        v-model="form.quantity"
+        v-model="quantity"
         label="Masukkan Jumlah Barang *"
         hint="Kuantitas"
         lazy-rules
@@ -51,19 +51,19 @@
           </div>
         
        <div class="col q-ma-sm">
-        <q-input outlined v-model="form.harga_barang" type="number" hint="Harga Barang" prefix="Rp" />
+        <q-input outlined v-model="harga_barang" type="number" hint="Harga Barang" prefix="Rp" />
         
         <div class="q-gutter-sm">
-        <q-radio v-model="form.kondisi" val="Baru" label="Baru" color="black" />
-        <q-radio v-model="form.kondisi" val="Bekas" label="Bekas" color="black" />
+        <q-radio v-model="kondisi" val="Baru" label="Baru" color="black" />
+        <q-radio v-model="kondisi" val="Bekas" label="Bekas" color="black" />
         </div>
         <div class="q-px-sm q-mt-sm">
-        Kondisi Barang : <strong>{{form.kondisi}}</strong>
+        Kondisi Barang : <strong>{{kondisi}}</strong>
         </div>
 
         <q-input
           filled
-          v-model="form.keterangan"
+          v-model="keterangan"
           type="textarea"
           label="Masukkan Keterangan *"
           hint="Keterangan Barang"
@@ -75,7 +75,7 @@
         </div>
         </q-card-section>
         <div class="flex flex-center">
-            <q-btn color="red" label="Submit"/>
+            <q-btn color="red" label="Submit" @click="onSubmit()"/>
         </div>
       </q-form>
       </q-card>
@@ -103,21 +103,19 @@ import barang2 from '../../api/admin/post';
 export default {
     data () {
     return {
-      form: {
           nama_barang :'',
           kategori :'',
           quantity :'',
           harga_barang :'',
           kondisi :'',
           keterangan :''
-      }
     }
   },
   methods :{
     onSubmit() {
         const self = this
-        barang2.postBarang(window, self.form.nama_barang, self.form.kondisi, 
-        self.form.quantity, self.form.kategori, self.form.harga_barang, self.form.keterangan)
+        barang2.postBarang(window, self.nama_barang, self.kondisi, 
+        self.quantity, self.kategori, self.harga_barang, self.keterangan)
             .then(function (result) {
                 self.$router.go('/dashboard/input')
             })
