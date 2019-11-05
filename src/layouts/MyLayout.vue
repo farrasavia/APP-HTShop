@@ -154,6 +154,7 @@
     </q-btn>
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
+       
        <div class="column" style="height: 10px"/>
 
         
