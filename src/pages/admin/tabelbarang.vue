@@ -1,67 +1,82 @@
 <template>
-  <div class="q-pa-md">
-    <div class="q-pa-md" style="max-width: 300px">
-    <q-input filled v-model="date">
-      <template v-slot:prepend>
-        <q-icon name="event" class="cursor-pointer">
-          <q-popup-proxy transition-show="scale" transition-hide="scale">
-            <q-date color="blue" v-model="date" mask="YYYY-MM-DD HH:mm" />
-          </q-popup-proxy>
-        </q-icon>
-      </template>
+  <div class="q-pa-md" style="max-width: 1000px">
+    <q-toolbar class="bg-primary text-black shadow-2">
+      <q-toolbar-title>Tabel Barang</q-toolbar-title>
+    </q-toolbar>
 
-      <template v-slot:append>
-        <q-icon name="access_time" class="cursor-pointer">
-          <q-popup-proxy transition-show="scale" transition-hide="scale">
-            <q-time color="blue" v-model="date" mask="YYYY-MM-DD HH:mm" format24h />
-          </q-popup-proxy>
-        </q-icon>
-      </template>
-    </q-input>
-  </div>
-    <q-option-group
-      v-model="separator"
-      inline
-      class="q-mb-md"
-      :options="[
-        { label: 'Horizontal', value: 'horizontal' },
-        { label: 'Vertical', value: 'vertical' },
-        { label: 'Cell', value: 'cell' },
-        { label: 'None', value: 'none' },
-      ]"
-    />
+    <q-list bordered class="rounded-borders bg-white">
+      <q-item class="bg-teal">
+        <q-item-section avatar top class="col-1 gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">No</q-item-label>
+        </q-item-section>
 
-    <q-markup-table :separator="separator" flat bordered>
-      <thead>
-        <tr>
-          <th class="text-right">ID</th>
-          <th class="text-left">Nama barang</th>
-          <th class="text-right">Harga</th>
-          <th class="text-right">Terjual</th>
-          <th class="text-right">Kuantitas</th>
-          <th class="text-right">Deskripsi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-left">A</td>
-          <td class="text-right">Panci</td>
-          <td class="text-right">600.000</td>
-          <td class="text-right">24</td>
-          <td class="text-right">4</td>
-          <td class="text-right"></td>
-        </tr>
-        <tr>
-          <td class="text-left">B</td>
-          <td class="text-right">Kuali</td>
-          <td class="text-right">900.000</td>
-          <td class="text-right">37</td>
-          <td class="text-right">4.3</td>
-          <td class="text-right"></td>
-        </tr>
- 
-      </tbody>
-    </q-markup-table>
+        <q-item-section top class="col-2   gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">Nama Barang</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Kategori</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Jumlah</q-item-label>
+        </q-item-section>
+        
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Harga</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Kondisi</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Keterangan</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm">
+            <q-item-label class="q-mt-sm flex flex-center">Aksi</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section avatar top class="col-1 gt-xm">
+            <q-item-label class="q-mt-sm">1</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2   gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">Panci</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">kompor</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">90</q-item-label>
+        </q-item-section>
+        
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Rp 750000</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Baru</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">warna kuning-silver</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm">
+          <div class="q-mt-sm flex flex-center" style="align : right">
+            <q-btn class="gt-xs" size="12px" flat dense round icon="delete" />
+            <q-btn class="gt-xs" size="12px" flat dense round icon="done" />
+            <q-btn size="12px" flat dense round icon="more_vert" />
+          </div>
+        </q-item-section>
+      </q-item>
+    </q-list>
   </div>
 </template>
 
