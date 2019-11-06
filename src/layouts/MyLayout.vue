@@ -122,7 +122,7 @@
            >
             <q-input
             filled
-            v-model="username"
+            v-model="email"
             label="Masukkan Email *"
             hint="Email"
             lazy-rules
@@ -349,7 +349,7 @@ import login_api from '../api/Login/index'
 export default {
   data () {
     return {
-      username: "",
+      email: "",
       password: "",
       isPwd: true,
       fixed: false,
@@ -361,12 +361,20 @@ export default {
     onSubmit () {
         let self = this;
         login_api
-            .userLogin(window, self.username, self.password)
+            .userLogin(window, self.email, self.password)
             .then(function(result){
                 console.log(result)
                 if (result){
+                  localStorage.setItem('email', result.email)
+                  localStorage.setItem('role', result.role)
+                if(result.role=='admin'){
+                  self.$router.push('/dashboard')
+                  } else if (result.role=='owner'){
+                    self.$router.push('/dashboard')
+                  } else {
                     self.$router.push("/customer/katalog");
                 }
+              }
             })
             .catch(function(err){
                 console.log(err)

@@ -1,4 +1,20 @@
 
+const requireAuth = (to, from, next) => {
+
+  let getRole= localStorage.getItem('role')
+  if (getRole === null) { 
+      alert('maaf anda belum login')
+    next({
+      
+      path: '/'
+      
+    })
+  } 
+   else {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -11,7 +27,7 @@ const routes = [
   },
   {
     path: '/customer',
-    
+    beforeEnter: requireAuth,
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },

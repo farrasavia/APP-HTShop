@@ -71,7 +71,7 @@
         <q-item-section top class="col-2 gt-xm">
           <div class="q-mt-sm flex flex-center" style="align : right">
             <q-btn class="gt-xs" size="12px" flat dense round icon="delete" />
-            <q-btn class="gt-xs" size="12px" flat dense round icon="done" />
+            <q-btn class="gt-xs" size="12px" flat dense round icon="edit" />
             <q-btn size="12px" flat dense round icon="more_vert" />
           </div>
         </q-item-section>
@@ -97,10 +97,10 @@ export default {
   async mounted() {
         const response = await
         baraang.getBarang(window) 
-            {
-                this.barangs = response
-            }
-  }
+          {
+            this.barangs = response
+          }
+}
         
 }
 </script>
