@@ -113,7 +113,7 @@
           </q-list>
         </q-menu>
         </q-btn>
-        <q-btn style= "color : black" label="Logout"  flat class="q-ms-sm" to="/" id="pojok">
+        <q-btn  @click="logout()" style= "color : black" label="Logout"  flat class="q-ms-sm" id="pojok">
         </q-btn>
     </q-header>
 
@@ -283,6 +283,19 @@ export default {
      
     }
   },
+  async mounted(){
+    let getrole  = await localStorage.getItem('role')
+    if(getrole != 'customer'){
+      this.$router.push('/')
+    }
+  },
+   methods: {
+       logout(){
+      localStorage.removeItem('role')
+      localStorage.removeItem('email')
+      this.$router.push("/")
 
+      }
+   }
 }
 </script>
