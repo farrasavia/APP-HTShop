@@ -57,6 +57,10 @@ const routes = [
   {
     path: '/owner',
     component: () => import('pages/owner/login.vue'),
+  },
+  {
+  path: '/upload',
+  component: () => import('pages/uploader/upload.vue')
   }
 ]
 
