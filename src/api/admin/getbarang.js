@@ -21,13 +21,15 @@ export default {
         console.log(err)
     })
   },
-  putBarang(window, nama_barang, kategori, quantity, harga_barang, kondisi, keterangan){
+  putBarang(window, id, nama_barang, kategori, quantity, harga_barang, kondisi, keterangan){
     return getApiNoAuth()
     .put('/barangs/'+id ,{
-        firstNama:firstNama,
-        lastNama:lastNama,
-        email:email,
-        phone:phone
+        nama_barang:nama_barang,
+        kategori:kategori,
+        quantity:quantity,
+        harga_barang:harga_barang,
+        kondisi:kondisi,
+        keterangan:keterangan
     })
     .then(function(response){
         console.log(response)

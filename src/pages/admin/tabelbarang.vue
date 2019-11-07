@@ -79,6 +79,32 @@
           </q-item-section>
         </q-item>
       </q-list>
+
+      <q-dialog v-model="dialog" persistent>
+        <q-card>
+            <q-card-section>
+              <div id="form" class="q-mx-auto" style="width: 600px">
+                <q-form class="q-gutter-md">
+                    <q-input filled v-model="form.nama_barang" label="Nama Barang *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.kategori" label="Kategori *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.quantity" label="Jumlah barang *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.harga_barang" label="Harga *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.kondisi" label="Kondisi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.keterangan" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    
+                    <!-- Button awal -->
+                    <div>
+                        <q-btn label="Update" type="button" color="blue" v-close-popup @click="update(form)" />
+                        <q-btn flat label="Cancel" color="black" v-close-popup="cancelEnabled" @click="batal()" />
+
+                    </div>
+                    <!-- Button akhir -->
+                </q-form>
+                  
+              </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
     </div>
   </div>
 </div>
@@ -96,15 +122,85 @@ export default {
       barangs: [{}],
       separator: 'vertical',
       date: '2019-02-01 12:44',
+      dialog: false,
+      cancelEnabled: false,
       form:{
+        id:'',
         nama_barang:'',
         kategori:'',
         quantity:'',
         harga_barang:'',
         kondisi:'',
         keterangan:''
-
-      }
+      },
+      columns: [
+        {
+          name: 'nama_barang',
+          required: true,
+          label: 'Nama Barang',
+          align: 'left',
+          field:row => row.nama_barang,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        },
+        {
+          name: 'kategori',
+          required: true,
+          label: 'Kategori Barang',
+          align: 'left',
+          field:row => row.kategori,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        },
+        {
+          name: 'quantity',
+          required: true,
+          label: 'jumlah barang',
+          align: 'left',
+          field:row => row.quantity,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        },
+        {
+          name: 'harga_barang',
+          required: true,
+          label: 'Harga',
+          align: 'left',
+          field:row => row.harga_barang,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        },
+        {
+          name: 'kondisi',
+          required: true,
+          label: 'Kondisi',
+          align: 'left',
+          field:row => row.kondisi,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        },
+        {
+          name: 'keterangan',
+          required: true,
+          label: 'keterangan',
+          align: 'left',
+          field:row => row.keterangan,
+          format: val => `${val}`,
+          sortable: true,
+          classes:'bg-grey-2allipsis',
+          style:'max-width:100px'
+        }
+      ],
     }
   },
   async mounted() {
@@ -135,41 +231,39 @@ export default {
       }
     },
     edit(barang) {
-            if (confirm('Anda akan di alihkan ke halaman Edit data, Tekan OK untuk lanjut atau Batal untuk kembali')) {
-                try {
-                    this.dialog = true
-                    this.updateSubmit = true
-                    this.form.id = barang.id
-                    this.form.nama_barang = barang.nama_barang
-                    this.form.kategori = barang.kategori
-                    this.form.quantity = barang.quantity
-                    this.form.harga_barang = barang.harga_barang
-                    this.form.kondisi = barang.kondisi
-                    this.form.keterangan = barang.keterangan
-
-                } catch (error) {
-                    console.log(error.message)
-                }
-            }
-        },
-        batal() {
-            if (confirm('Apakah Anda yakin ingin keluar proses ini !!!')) {
-                this.dialog = false
-            }
-        },
-        update(id) {
-            const self = this
-            baraang.putBarang(window, self.form.nama_barang, self.form.kategori, 
-            self.form.quantity, self.form.harga_barang, self.form.kondisi, self.keterangan)
-            .then(function (result) {
-                self.$router.go('/employees')
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
+      try {
+        this.dialog = true
+        this.updateSubmit = true
+        this.form.id = barang.id
+        this.form.nama_barang = barang.nama_barang
+        this.form.kategori = barang.kategori
+        this.form.quantity = barang.quantity
+        this.form.harga_barang = barang.harga_barang
+        this.form.kondisi = barang.kondisi
+        this.form.keterangan = barang.keterangan
+      }
+      catch (error) 
+        {
+          console.log(error.message)
         }
-    
+            
+    },
+    batal() {
+      {
+        this.dialog = false
+      }
+    },
+    update(id) {
+        const self = this
+        baraang.putBarang(window, self.form.id, self.form.nama_barang, self.form.kategori, 
+        self.form.quantity, self.form.harga_barang, self.form.kondisi, self.form.keterangan)
+        .then(function (result) {
+            self.$router.go('/dashboard/tabelbarang')
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    }
   }
-        
 }
 </script>
