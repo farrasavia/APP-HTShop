@@ -36,7 +36,7 @@
         <div>
           <q-card-section>
           <q-btn class="full-width" color="blue-grey-10"
-          to="/dashboard"
+          @click="onSubmit()" 
           label="Login"/>
           </q-card-section>
         </div>
@@ -80,6 +80,8 @@ export default {
                 if (result){
                   localStorage.setItem('email', result.email)
                   localStorage.setItem('role', result.role)
+                  
+                  console.log(localStorage.getItem('role'))
                 if(result.role=='admin'){
                   self.$router.push('/dashboard')
                   } else if (result.role=='owner'){

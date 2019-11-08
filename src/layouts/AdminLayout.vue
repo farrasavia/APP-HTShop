@@ -64,7 +64,7 @@
             <q-icon name="link_off" />
           </q-item-section>
           <q-item-section>
-            <q-item-label>Logout</q-item-label>
+            <q-item-label @click="logout()">Logout</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -89,6 +89,28 @@ export default {
       separator: 'vertical',
       leftDrawerOpen: true
     }
-  }
+  },
+  async  mounted(){
+    let getRole = await localStorage.getItem('role');
+    if(getRole !='admin' || getRole ==='owner'){
+         this.$router.push('/owner/')
+      }
+      else if(getRole !='admin' || getRole ==='customer'){
+         this.$router.push('/')
+      }
+      else if(getRole ===null){
+         this.$router.push('/admin')
+      } 
+      else {
+        alert('anda login sebagai admin')
+      }  
+    },
+    methods :{
+      logout(){
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
+        this.$router.push('/admin');
+      }
+    }
 }
 </script>

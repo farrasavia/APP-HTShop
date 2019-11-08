@@ -1,24 +1,25 @@
 
-const requireAuth = (to, from, next) => {
+// const requireAuth = (to, from, next) => {
 
-  let getRole= localStorage.getItem('role')
-  if (getRole === null) { 
-      alert('maaf anda belum login')
-    next({
+//   let getRole= localStorage.getItem('role')
+//   if (getRole === null) { 
+//       alert('maaf anda belum login')
+//     next({
       
-      path: '/'
+//       path: '/'
       
-    })
-  } 
-   else {
-    next()
-  }
-}
+//     })
+//   } 
+//    else {
+//     next()
+//   }
+// }
 
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
+    // beforeEnter: requireAuth,
     children: [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'register', component: () => import('pages/customer/register.vue') },
@@ -27,7 +28,7 @@ const routes = [
   },
   {
     path: '/customer',
-    beforeEnter: requireAuth,
+    // beforeEnter: requireAuth,
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
@@ -43,6 +44,7 @@ const routes = [
   {
     path: '/dashboard',
      component: () => import('layouts/AdminLayout.vue'),
+    //  beforeEnter: requireAuth,
      children:[
        { path:'', component: () => import('pages/admin/dashboardAdmin.vue')},
        { path: 'tabelbarang', component: () => import('pages/admin/tabelbarang.vue')},
