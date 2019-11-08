@@ -24,5 +24,16 @@ function uploadKSSK(formData) {
         img, { url: `${BASE_URL_KSSK}/images/${img.id}` })));
   }
 
+  function downloadImage(window, file){
+    return getApiNoAuthLB()
+    .get('container/images/download/'+file)
+    .then(function(response){
+        return response.config
+    })
+    .catch (function(err){
+        console.log(err)
+    })
+  }
 
-export {upload, uploadKSSK }
+
+export {upload, uploadKSSK, downloadImage }

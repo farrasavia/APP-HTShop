@@ -3,7 +3,7 @@ const requireAuth = (to, from, next) => {
 
   let getRole= localStorage.getItem('role')
   if (getRole === null) { 
-      alert('maaf anda belum login')
+      alert('Silahkan Untuk Login Untuk Melihat Lebih Banyak Melihat Produk')
     next({
       
       path: '/'

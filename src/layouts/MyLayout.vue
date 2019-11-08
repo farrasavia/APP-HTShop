@@ -381,6 +381,6 @@ export default {
             });
     
       }
-    },
+    }
 }
 </script>

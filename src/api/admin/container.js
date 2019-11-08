@@ -2,6 +2,7 @@ import { getApiNoAuth } from "../utils"
 
 export default {
     getcontainer(window){
+        console.log(window, file, container)
         return getApiNoAuth()
         .get('container/images/files')
         .then(function(response){
