@@ -5,11 +5,64 @@
         <h4 style="text-align:center;">Upload Dokumen KSSK</h4>
         <q-form class="q-gutter-md">
   
-          <q-input
+           <q-input
+          filled
+          v-model="nama_barang"
+          label="Masukkan Nama Barang*"
+          hint="Nama Barang"
+          lazy-rules
+          :rules="[ val => val && val.length > 0 || 'Masukkan Nama']"
+        />
+        
+        <div class="q-gutter-sm">
+        <q-radio v-model="kategori" val="Blender" label="Blender" color="black" />
+        <q-radio v-model="kategori" val="Pisau" label="Pisau" color="black" />
+        <q-radio v-model="kategori" val="Kompor" label="Kompor" color="black" />
+        <q-radio v-model="kategori" val="Rice Cooker" label="Rice Cooker" color="black" />
+       </div>
+        <div class="q-px-sm q-mt-sm">
+        Kategori Barang : <strong>{{kategori}}</strong>
+        </div>
+        
+             
+      <q-input
+        filled
+        type="number"
+        v-model="quantity"
+        label="Masukkan Jumlah Barang *"
+        hint="Kuantitas"
+        lazy-rules
+        :rules="[
+          val => val !== null && val !== '' || 'masukkan jumlah barang',
+          val => val > 0 || 'Kuantitas tidak boleh kosong atau 0'
+        ]"
+      />
+ 
+        <q-input outlined v-model="harga_barang" type="number" hint="Harga Barang" prefix="Rp" />
+        
+        <div class="q-gutter-sm">
+        <q-radio v-model="kondisi" val="Baru" label="Baru" color="black" />
+        <q-radio v-model="kondisi" val="Bekas" label="Bekas" color="black" />
+        </div>
+        <div class="q-px-sm q-mt-sm">
+        Kondisi Barang : <strong>{{kondisi}}</strong>
+        </div>
+
+        <q-input
+          filled
+          v-model="keterangan"
+          type="textarea"
+          label="Masukkan Keterangan *"
+          hint="Keterangan Barang"
+          lazy-rules
+          style="padding-top: 20px"
+          :rules="[ val => val && val.length > 0 || 'Masukkan Telepon']"
+        />
+
+        <q-input
             filled
             v-model="nameFile"
             label="Nama File"
-            hint="Contoh: 2016-12-01 Rapat Stabilitas Sistem Keuangan Triwulan IV - 2016"
             lazy-rules
             :rules="[ val => val && val.length > 0 || 'Please type something']"
           />
@@ -222,6 +275,7 @@
 
 <script>
 import {uploadKSSK}  from '../../api/upload/index';
+import barang2 from '../../api/admin/post';
 const STATUS_INITIAL = 0, STATUS_SAVING = 1, STATUS_SUCCESS = 2, STATUS_FAILED = 3;
 
 export default {
@@ -242,8 +296,13 @@ export default {
       waitedFormData: '',
       waitedFormDataPdf: '',
       filesImage: '',
-      filesPdf: ''
-
+      filesPdf: '',
+      nama_barang :'',
+      kategori :'',
+      quantity :'',
+      harga_barang :'',
+      kondisi :'',
+      keterangan :''
 
     };
   },
@@ -271,6 +330,17 @@ export default {
       }
     },
     methods: {
+      postProduct() {
+          barang2
+          .postBarang(window, this.nama_barang, this.kondisi, this.quantity, 
+          this.kategori, this.harga_barang, this.keterangan, this.nameFile+'.jpg' )
+          .then(function(result) {
+            return result;
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      },
         reset() {
         // reset form to initial state
         this.currentStatus = STATUS_INITIAL;
@@ -323,13 +393,11 @@ export default {
       submit(waitedFormData) {
         
         this.save(waitedFormData);
+        this.postProduct();
       }
     },
     mounted() {
       this.reset();
     },
-
-
-
 };
 </script>
