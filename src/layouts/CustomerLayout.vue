@@ -113,7 +113,18 @@
           </q-list>
         </q-menu>
         </q-btn>
-        <q-btn id="pojok" flat round icon="shopping_cart" color="white" text-color="black" @click="fixed = true" />
+        <q-btn-dropdown id="pojok" label="PENGATURAN" 
+        flat class="bg-white text-black float-right">
+        <q-list>
+          <q-item clickable v-close-popup 
+          tag="a" @click="logout()">
+            <q-item-section>
+              <q-item-label color="black" >Keluar Akun</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-btn-dropdown>
+        <q-btn id="pojok" class="float-right" flat round icon="shopping_cart" color="white" text-color="black" @click="fixed = true" />
         <q-dialog v-model="fixed">
       <q-card style="width:700px">
         <q-toolbar class="bg-primary text-black shadow-2">
@@ -184,17 +195,6 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-        <q-btn-dropdown id="pojok" label="PENGATURAN" 
-        flat class="bg-white text-black">
-        <q-list>
-          <q-item clickable v-close-popup 
-          tag="a" @click="logout()">
-            <q-item-section>
-              <q-item-label color="black" >Keluar Akun</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-btn-dropdown>
     </q-header>
 
     <!-- <q-drawer
@@ -343,9 +343,9 @@
   padding-bottom: 20px
 } 
 
-#pojok{
+/* #pojok{
   left: 1025px;
-}
+} */
 
 /* .src{
         width: 400px;

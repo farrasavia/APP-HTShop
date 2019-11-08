@@ -5,7 +5,6 @@ export default {
                 kategori, harga_barang, keterangan, imgurl){
     console.log( nama_barang, kondisi, quantity, kategori, harga_barang, keterangan, imgurl)
     return getApiNoAuth()
-    
       .post('/barangs/' ,{
         nama_barang : nama_barang,
         kondisi : kondisi,

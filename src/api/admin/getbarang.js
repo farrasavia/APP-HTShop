@@ -37,5 +37,15 @@ export default {
     }).catch(function(err){
         console.log(err)
     })
+  },
+  downloadImage(window, file){
+    return getApiNoAuth()
+    .get('container/images/download/'+file)
+    .then(function(response){
+        return response.config
+    })
+    .catch (function(err){
+        console.log(err)
+    })
   }
 }
