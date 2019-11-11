@@ -99,6 +99,7 @@
 <style scoped>
   .bawah {
          margin-top: 1%;
+         height: 600px;
     }
   #caros{
     border: 10px solid rgb(255, 255, 255);
@@ -140,6 +141,5 @@ export default {
                     console.log(err);
                 });
      },
-  name: 'PageIndex'
 }
 </script>

@@ -1,181 +1,44 @@
 <template>
 <div class="q-pa-md">
-    <q-item-label id="font" class="q-pa-md">PRODUK TERBARU</q-item-label>
-    <div class="q-col-gutter-md row items-start">
-      <div class="col-3">
-        <q-img
-          src="https://cdn.quasar.dev/img/parallax2.jpg"
-          style="width: 100%"
-        >
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
+  <q-card class="bawah">
+    <q-card-section >
+      <div class="text-h4 text-center">PRODUK TERBARU</div>
+    </q-card-section>
+    <div class="row " style="padding-top: 10px">
+      <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
+      <q-card-section class="bg-grey-4">
+          <q-img style="width:300px; height:300px " class="q-mx-auto"
+            :src="item.imgurl"
+          >
+          <div class="absolute-bottom text-h5 text-center q-pa-xs">
+            Rp {{item.harga_barang}}
           </div>
-        </q-img>
+          </q-img>
         <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        <div class="flex flex-center text-h6">{{item.nama_barang}}</div>
         </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
+      </q-card-section>
       </div>
     </div>
-        <q-item-label id="font" class="q-pa-md">SEMUA PRODUK</q-item-label>
-    <div class="q-col-gutter-md row items-start">
-      <div class="col-3">
-        <q-img
-          src="https://cdn.quasar.dev/img/parallax2.jpg"
-          style="width: 100%"
-        >
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+      <q-separator class="garis" color="black" style="height:5px"/>
+        <q-card-section >
+          <div class="text-h4 text-center">SEMUA PRODUK</div>
         </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
+      <q-separator class="garis2" color="black" style="height:5px"/>
+        <div class="row " style="padding-top: 10px">
+         <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
+          <q-card-section class="bg-grey-4">
+          <q-img style="width:300px; height:300px " class="q-mx-auto"
+            :src="item.imgurl"
+          >
+          <div class="absolute-bottom text-h5 text-center q-pa-xs">
+            Rp {{item.harga_barang}}
           </div>
-        </q-img>
+          </q-img>
         <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+          <div class="flex flex-center text-h6">{{item.nama_barang}}</div>
         </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-           Rp 20.000 
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-           Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
-      </div>
-      <div class="col-3">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-          <div class="absolute-bottom text-subtitle1 text-center q-pa-xs">
-            Rp 20.000
-          </div>
-        </q-img>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
-        </q-card-section>
+          </q-card-section>
       </div>
     </div>
         <div class="q-pa-lg flex flex-center">
@@ -186,16 +49,43 @@
             :boundary-links="true">
             </q-pagination>
         </div>
+    </q-card>
   </div>
 </template>
-</<style scoped>
-    #font {
-    font-size : 25px;
-    color: black
+<style scoped>
+  .garis {
+      margin-top: 1%;
+  }
+  .garis2{
+    margin-top:0%;
+    margin-bottom: 1%;
   }
 </style>
 <script>
+import containeer from '../../api/admin/container';
+import {downloadImage} from '../../api/upload/index';
+import product from '../../api/admin/getbarang'
 export default {
-    current: 1
+  data() {
+    return {
+    images:[]
+   }
+  },
+   computed: {
+    getImgs() {
+      this.getImg()
+    }
+  },
+  beforeCreate() {
+         let self=this;
+    product.getBarang(window )
+                .then(function (result) {
+                    console.log(result);
+                    self.images= result;
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+     },
 }
 </script>
