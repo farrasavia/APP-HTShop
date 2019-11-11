@@ -2,7 +2,7 @@
 <div class="q-pa-md">
     <div class="q-col-gutter-md row items-start">
         <div class="col-5">
-        <q-carousel
+        <!-- <q-carousel
         swipeable
         animated
         v-model="slide"
@@ -13,14 +13,19 @@
         <q-carousel-slide :name="2" img-src="./statics/ricee.jpeg"  />
         <q-carousel-slide :name="3" img-src="./statics/riceee.jpeg"  />
         <q-carousel-slide :name="4" img-src="./statics/riceeee.jpeg"  />
-        </q-carousel>
-        <q-card-section class="bg-white">
-        <div class="flex flex-center text-h5">Rp 500.000</div>
-        <div class="flex flex-center text-h6">Rice Cooker Cosmos RC2001</div>
+        </q-carousel> -->
+        <q-card dark bordered class="bg-white my-card">
+        <q-card-section style="height:530px" class="bg-white">
+        <q-img  class="q-mx-auto" style="height:380px"
+        :src="images.imgurl" >
+        <div class="absolute-bottom text-h5 text-center q-pa-xs" style="color:white">Rp {{images.harga_barang}}</div>
+        </q-img>
+        <div class="flex flex-center text-h6" style="color:black">{{images.nama_barang}}</div>
         <div class="flex flex-center text-h6">
          <q-btn color="grey-6" label="Beli" @click="alert = true"/>
         </div>
         </q-card-section>
+        </q-card>
       </div>
     <q-dialog v-model="alert">
       <q-card style="width:500px">
@@ -87,26 +92,26 @@
             <q-card-section class="text-h6" style= "color : black">
             Nama Barang 
             </q-card-section>
-            <q-card-section>
-             
+            <q-card-section class="text-h4" style= "color : black">
+             {{images.nama_barang}}
             </q-card-section>
             <q-card-section class="text-h6" style= "color : black">
             Kondisi
             </q-card-section>
-            <q-card-section>
-             
+            <q-card-section class="text-h4" style= "color : black">
+             {{images.kondisi}}
             </q-card-section>
             <q-card-section class="text-h6" style= "color : black">
             Harga
             </q-card-section>
-            <q-card-section>
-             
-            </q-card-section>            
+            <q-card-section class="text-h4" style= "color : black">
+             {{images.harga_barang}}
+            </q-card-section>          
             <q-card-section class="text-h6" style= "color : black">
             Keterangan
             </q-card-section>
-            <q-card-section>
-             
+            <q-card-section class="text-h4" style= "color : black">
+             {{images.keterangan}}
             </q-card-section>
         </q-card>
         </div>
@@ -186,9 +191,11 @@
 </style>
 
 <script>
+import product from '../../api/barang/index';
 export default {
       data () {
     return {
+      images:[],
       slide: 1,
       alert: false,
         form: {
@@ -202,6 +209,46 @@ export default {
                 alert = false
             }
     }
-  }
+  },
+    computed: {
+    getImgs() {
+      this.getImg()
+    }
+  },
+
+  beforeCreate() {
+        let getId= localStorage.getItem('id');
+        console.log(getId)
+         let self=this;
+    product.getproductbyId(window, getId )
+                .then(function (result) {
+                    console.log(result);
+                    self.images= result;
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+     },
+
+    methods : {
+
+       add(){
+            let getIdProduct= localStorage.getItem('id_barang');
+            let getIdCustomer= localStorage.getItem('id');
+            let self=this;
+            
+
+            cart.postCart(window, getIdProduct, getIdCustomer)
+            .then(function(result)
+                {
+                    if(result){
+                        self.$router.push('/customer/pemesanan');
+                    } 
+                })
+            .catch(function(err){
+                console.log(err);
+            });
+        }
+     }
 }
 </script>
