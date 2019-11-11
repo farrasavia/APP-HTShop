@@ -203,6 +203,7 @@ export default {
         .then(function (result) {
             console.log(result);
             self.images= result;
+           
         })
         .catch(function (err) {
             console.log(err);
@@ -219,27 +220,27 @@ export default {
       },
 
     methods : {
-       add(){
-        let getIdProduct= localStorage.getItem('id_barang');
-        let getIdCustomer= localStorage.getItem('id');
-        let self=this;
+      //  add(){
+      //   let getIdProduct= localStorage.getItem('id_barang');
+      //   let getIdCustomer= localStorage.getItem('id');
+      //   let self=this;
         
 
-        cart.postCart(window, getIdProduct, getIdCustomer)
-        .then(function(result)
-            {
-              if(result){
-                  self.$router.push('/customer/pemesanan');
-              } 
-            })
-        .catch(function(err){
-            console.log(err);
-        });
-      },
+      //   cart.postCart(window, getIdProduct, getIdCustomer)
+      //   .then(function(result)
+      //       {
+      //         if(result){
+      //             self.$router.push('/customer/pemesanan');
+      //         } 
+      //       })
+      //   .catch(function(err){
+      //       console.log(err);
+      //   });
+      // },
       show(gambar){
         console.log(gambar)
       localStorage.setItem('id', gambar.id)
-      this.$router.push('/customer/pemesanan2')
+      this.$router.push('/customer/pemesanan')
     }
   },
 }

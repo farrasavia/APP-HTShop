@@ -38,6 +38,7 @@ const routes = [
     { path: 'blender', component: () => import('pages/customer/blender.vue') },
     { path: 'kulkas', component: () => import('pages/customer/kulkas.vue') },
     { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') },
+    { path: 'pemesanan2', component: () => import('pages/customer/pemesanan2.vue') },
       { path: 'akhir', component: () => import('pages/customer/akhir.vue') }
     ]
   },
