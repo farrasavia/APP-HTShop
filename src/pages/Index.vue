@@ -131,23 +131,27 @@ export default {
     }
   },
   beforeCreate() {
-         let self=this;
-    product.getBarang(window )
-                .then(function (result) {
-                    console.log(result);
-                    self.images= result;
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-     },
-  // name: 'PageIndex',
-     methods :{
+    let self=this;
+    product
+    .getBarang(window )
+      .then(function (result) {
+          console.log(result);
 
-       show(item){
-       localStorage.setItem('id', item.id)
-       this.$router.push('/customer/pemesanan')
-      }
-     },
+          for (let i = 0; i < 3; i++) {
+            self.images.push(result[i])
+          }
+  
+      })
+      .catch(function (err) {
+          console.log(err);
+      });
+    },
+  // name: 'PageIndex',
+  methods :{
+      show(item){
+      localStorage.setItem('id', item.id)
+      this.$router.push('/customer/pemesanan')
+    }
+  },
 }
 </script>

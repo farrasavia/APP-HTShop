@@ -5,8 +5,8 @@ export default {
     return getApiNoAuth()
       .get('barangs')
       .then(function (response) {
-        console.log(response)
-        return response.data
+        console.log('mek ', response.data.sort((a, b) => new Date(b.createAt) - new Date(a.createAt)))
+        return response.data.sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
       }).catch(function (err) {
         console.log(err)
       })
