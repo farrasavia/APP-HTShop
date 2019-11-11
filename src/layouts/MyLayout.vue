@@ -78,7 +78,7 @@
     </q-btn>
         <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
-       
+       <q-separator color="black" style="height:2px"/>
        <div class="column" style="height: 10px"/>
 
         
