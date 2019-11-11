@@ -78,7 +78,7 @@
         </q-card-section>
              <div class="row " style="padding-top: 10px">
                <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:400px; max-width:400px">
-                <q-card-section class="bg-grey-4">
+                <q-card-section class="bg-grey-4" @click="show(item)">
                     <q-img style="width:400px; height:400px " class="q-mx-auto"
                       :src="item.imgurl"
                     />
@@ -99,6 +99,7 @@
 <style scoped>
   .bawah {
          margin-top: 1%;
+         height: 600px;
     }
   #caros{
     border: 10px solid rgb(255, 255, 255);
@@ -140,6 +141,13 @@ export default {
                     console.log(err);
                 });
      },
-  name: 'PageIndex'
+  // name: 'PageIndex',
+     methods :{
+
+       show(item){
+       localStorage.setItem('id', item.id)
+       this.$router.push('/customer/pemesanan')
+      }
+     },
 }
 </script>
