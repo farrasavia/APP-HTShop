@@ -15,8 +15,8 @@
         /> -->
 
         <q-toolbar-title id="stick">
-          <q-btn flat to="/">
-        <img src="~/assets/logo2.jpg">
+          <q-btn flat to="/customer/">
+        <img src="../statics/logoku.png">
           </q-btn>
          </q-toolbar-title>
 
@@ -364,19 +364,41 @@ export default {
      
     }
   },
-  async mounted(){
-    let getrole  = await localStorage.getItem('role')
-    if(getrole != 'customer'){
-      this.$router.push('/')
-    }
-  },
-   methods: {
-       logout(){
-      localStorage.removeItem('role')
-      localStorage.removeItem('email')
-      this.$router.push("/")
+  // async mounted(){
+  //   let getrole  = await localStorage.getItem('role')
+  //   if(getrole != 'customer'){
+  //     this.$router.push('/')
+  //   }
+  // },
+  //  methods: {
+  //      logout(){
+  //     localStorage.removeItem('role')
+  //     localStorage.removeItem('email')
+  //     this.$router.push("/")
 
+  //     }
+  //  },
+   async  mounted(){
+    let getRole = await localStorage.getItem('role');
+    if(getRole !='customer' || getRole ==='owner'){
+         this.$router.push('/owner/')
       }
-   }
+      else if(getRole !='customer' || getRole ==='admin'){
+         this.$router.push('/dashboard')
+      }
+      else if(getRole ===null){
+         this.$router.push('/')
+      }
+       else {
+        alert('anda login sebagai customer')
+      }  
+    },
+    methods :{
+      logout(){
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
+        this.$router.push('/');
+      }
+    }
 }
 </script>

@@ -58,7 +58,7 @@
                     <q-item-label class="q-mt-sm flex flex-center">Status</q-item-label>
                     </q-item-section>
                 </q-item>
-                <q-item  v-for="(pemesanan, index) in pemesanans" :key="pemesanan.id" class="bg-grey-3" line="1">
+                <q-item  v-for="(pemesanan,index ) in pemesanans" :key="pemesanan.id" class="bg-grey-3" line="1">
                     <q-item-section avatar top class="col-0 gt-xm flex flex-center">
                         <q-item-label class="q-mt-sm">{{index+1}}</q-item-label>
                     </q-item-section>

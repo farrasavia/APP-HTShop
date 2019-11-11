@@ -30,6 +30,7 @@ const routes = [
     beforeEnter: requireAuth,
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
+    { path: '', component: () => import('pages/Index.vue')}, 
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
     { path: 'kpp', component: () => import('pages/customer/kpp.vue') },
     { path: 'pisau', component: () => import('pages/customer/pisau.vue') },

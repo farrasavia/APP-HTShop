@@ -16,7 +16,7 @@
 
         <q-toolbar-title id="stick">
           <q-btn flat to="/">
-        <img src="~/assets/logo2.jpg">
+        <img src="../statics/logoku.png">
           </q-btn>
          </q-toolbar-title>
 
