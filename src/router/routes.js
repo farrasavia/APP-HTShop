@@ -1,4 +1,20 @@
 
+const requireAuth = (to, from, next) => {
+
+  let getRole= localStorage.getItem('role')
+  if (getRole === null) { 
+      alert('Silahkan Untuk Login Untuk Melihat Lebih Banyak Melihat Produk')
+    next({
+      
+      path: '/'
+      
+    })
+  } 
+   else {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
@@ -11,9 +27,10 @@ const routes = [
   },
   {
     path: '/customer',
-    
+    beforeEnter: requireAuth,
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
+    { path: '', component: () => import('pages/Index.vue')}, 
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
     { path: 'kpp', component: () => import('pages/customer/kpp.vue') },
     { path: 'pisau', component: () => import('pages/customer/pisau.vue') },
@@ -41,6 +58,10 @@ const routes = [
   {
     path: '/owner',
     component: () => import('pages/owner/login.vue'),
+  },
+  {
+  path: '/upload',
+  component: () => import('pages/uploader/upload.vue')
   }
 ]
 

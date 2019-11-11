@@ -11,13 +11,13 @@
                         </q-tooltip>
                     </q-btn>
                     <div class="float-right">
-                        <q-btn class="float-left" color="red" icon="search" size="sm" @click="findByName()">
+                        <q-btn class="float-left" color="red" icon="search" size="sm">
                         <q-tooltip content-class="bg-red" anchor="center right" content-style="font-size: 16px" :offset="[10, 10]">
                            SEARCH
                         </q-tooltip>
                     </q-btn>
                     <q-input class=" src bg-white"
-                    v-model="find_name"
+                    
                     filled
                     lazy-rules
                     />
@@ -58,37 +58,38 @@
                     <q-item-label class="q-mt-sm flex flex-center">Status</q-item-label>
                     </q-item-section>
                 </q-item>
-                <q-item class="bg-grey-3" line="1">
-                    <q-item-section avatar top class="col-0 gt-xm">
-                        <q-item-label class="q-mt-sm">1</q-item-label>
+                <q-item  v-for="(pemesanan,index ) in pemesanans" :key="pemesanan.id" class="bg-grey-3" line="1">
+                    <q-item-section avatar top class="col-0 gt-xm flex flex-center">
+                        <q-item-label class="q-mt-sm">{{index+1}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">Rice Cooker</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.nama_barang}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-1 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">5-11-2019</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.tanggal}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">Royani Saragih</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.nama_pemesan}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">Nomaden</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.alamat_pemesan}} & {{pemesanan.telp_pemesan}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">Burung Elang</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.pengiriman}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-1 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">Males Nyatet</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.catatan}}</q-item-label>
                     </q-item-section>
 
-                    <q-item-section top class="col-2 gt-xm flex flex-center">
-                        <q-toggle v-model="accept" color="teal"/>
+                    <q-item-section  top class="col-2 gt-xm flex flex-center">
+                        <q-toggle @input="update(pemesanan.id, pemesanan.status)" v-model="pemesanan.status" color="teal">{{pemesanan.status}}</q-toggle>
+
                     </q-item-section>
                 </q-item>
             </q-list>
@@ -103,12 +104,37 @@
           }
 </style>
 
-</<script>
+<script>
+import pemesanaan from '../../api/admin/getpemesanan'
 export default {
     data() {
         return {
-            accept: false
+            pemesanans: [{}],
+            status: false,
+            id:''
         }
+    },
+    async mounted() {
+        const response = await
+        pemesanaan.getPemesanan(window) 
+          {
+            this.pemesanans = response
+        }
+    },
+    methods : {
+            update(id, status) {
+            const self = this
+            console.log(status, id)
+            pemesanaan.putPemesanan(window, id, status)
+            .then(function (result) {
+                // self.$router.go('/dashboard/pemesanan')
+                console.log(result)
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        },
+        
     }
 }
 </script>

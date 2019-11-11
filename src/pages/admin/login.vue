@@ -14,16 +14,16 @@
         <q-card-section>
         <q-input
           filled
-          v-model="username"
-          label="Your Username *"
-          hint="Username"
+          v-model="email"
+          label="Masukkan Email *"
+          hint="Email"
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something']"
         />
         </q-card-section>
         <q-card-section>
         <q-input v-model="password" filled :type="isPwd ? 'password' : 'text'" 
-        hint="Password" label="Your Password *">
+        hint="Password" label="Masukkan Password *">
           <template v-slot:append>
             <q-icon
               :name="isPwd ? 'visibility_off' : 'visibility'"
@@ -36,7 +36,7 @@
         <div>
           <q-card-section>
           <q-btn class="full-width" color="blue-grey-10"
-          to="/dashboard"
+          @click="onSubmit()" 
           label="Login"/>
           </q-card-section>
         </div>
@@ -61,13 +61,41 @@
   }
 </style>
 <script>
+import login_api from '../../api/Login/index'
 export default {
     data () {
     return {
-      username: "",
+      email: "",
       password: "",
       isPwd: true
     }
   },
+    methods: {
+    onSubmit () {
+        let self = this;
+        login_api
+            .userLogin(window, self.email, self.password)
+            .then(function(result){
+                console.log(result)
+                if (result){
+                  localStorage.setItem('email', result.email)
+                  localStorage.setItem('role', result.role)
+                  
+                  console.log(localStorage.getItem('role'))
+                if(result.role=='admin'){
+                  self.$router.push('/dashboard')
+                  } else if (result.role=='owner'){
+                    self.$router.push('/dashboard')
+                  } else {
+                    self.$router.push("/customer/katalog");
+                }
+              }
+            })
+            .catch(function(err){
+                console.log(err)
+            });
+    
+      }
+    },
 }
 </script>

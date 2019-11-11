@@ -15,8 +15,8 @@
         /> -->
 
         <q-toolbar-title id="stick">
-          <q-btn flat to="/">
-        <img src="~/assets/logo2.jpg">
+          <q-btn flat to="/customer/">
+        <img src="../statics/logoku.png">
           </q-btn>
          </q-toolbar-title>
 
@@ -113,8 +113,88 @@
           </q-list>
         </q-menu>
         </q-btn>
-        <q-btn style= "color : black" label="Logout"  flat class="q-ms-sm" to="/" id="pojok">
-        </q-btn>
+        <q-btn-dropdown id="pojok" label="PENGATURAN" 
+        flat class="bg-white text-black float-right">
+        <q-list>
+          <q-item clickable v-close-popup 
+          tag="a" @click="logout()">
+            <q-item-section>
+              <q-item-label color="black" >Keluar Akun</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-btn-dropdown>
+        <q-btn id="pojok" class="float-right" flat round icon="shopping_cart" color="white" text-color="black" @click="fixed = true" />
+        <q-dialog v-model="fixed">
+      <q-card style="width:700px">
+        <q-toolbar class="bg-primary text-black shadow-2">
+      <q-toolbar-title>Tabel Barang</q-toolbar-title>
+    </q-toolbar>
+
+    <q-list bordered class="rounded-borders bg-white">
+      <q-item class="bg-teal">
+        <q-item-section avatar top class="col-1 gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">No</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2   gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">Nama Barang</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Jumlah</q-item-label>
+        </q-item-section>
+        
+        <q-item-section top class="col-2 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Harga</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-3 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Keterangan</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm">
+            <q-item-label class="q-mt-sm flex flex-center">Aksi</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section avatar top class="col-1 gt-xm">
+            <q-item-label class="q-mt-sm">1</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2   gt-xm" style="align : left">
+            <q-item-label class="q-mt-sm">Panci</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-1 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">90</q-item-label>
+        </q-item-section>
+        
+        <q-item-section top class="col-2 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">Rp 750000</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-3 gt-xm" style="align : center">
+            <q-item-label class="q-mt-sm">warna kuning-silver</q-item-label>
+        </q-item-section>
+
+        <q-item-section top class="col-2 gt-xm">
+          <div class="q-mt-sm flex flex-center" style="align : right">
+            <q-btn class="gt-xs" size="12px" flat dense round icon="delete" />
+            <q-btn class="gt-xs" size="12px" flat dense round icon="done" />
+            <q-btn size="12px" flat dense round icon="more_vert" />
+          </div>
+        </q-item-section>
+      </q-item>
+    </q-list>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Decline" color="blue" v-close-popup />
+          <q-btn flat label="Accept" color="blue" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
     </q-header>
 
     <!-- <q-drawer
@@ -263,9 +343,9 @@
   padding-bottom: 20px
 } 
 
-#pojok{
-  left: 950px;
-}
+/* #pojok{
+  left: 1025px;
+} */
 
 /* .src{
         width: 400px;
@@ -280,9 +360,45 @@
 export default {
   data () {
     return {
+      fixed: false
      
     }
   },
+  // async mounted(){
+  //   let getrole  = await localStorage.getItem('role')
+  //   if(getrole != 'customer'){
+  //     this.$router.push('/')
+  //   }
+  // },
+  //  methods: {
+  //      logout(){
+  //     localStorage.removeItem('role')
+  //     localStorage.removeItem('email')
+  //     this.$router.push("/")
 
+  //     }
+  //  },
+   async  mounted(){
+    let getRole = await localStorage.getItem('role');
+    if(getRole !='customer' || getRole ==='owner'){
+         this.$router.push('/owner/')
+      }
+      else if(getRole !='customer' || getRole ==='admin'){
+         this.$router.push('/dashboard')
+      }
+      else if(getRole ===null){
+         this.$router.push('/')
+      }
+       else {
+        alert('anda login sebagai customer')
+      }  
+    },
+    methods :{
+      logout(){
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
+        this.$router.push('/');
+      }
+    }
 }
 </script>
