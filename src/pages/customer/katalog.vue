@@ -7,7 +7,7 @@
     <div class="row " style="padding-top: 10px">
       <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
       <q-card-section class="bg-grey-4">
-          <q-img style="width:300px; height:300px " class="q-mx-auto"
+          <q-img @click="show(item)" style="width:300px; height:300px " class="q-mx-auto"
             :src="item.imgurl"
           >
           <div class="absolute-bottom text-h5 text-center q-pa-xs">
@@ -26,9 +26,9 @@
         </q-card-section>
       <q-separator class="garis2" color="black" style="height:5px"/>
         <div class="row " style="padding-top: 10px">
-         <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
+         <div class="col q-mx-auto  column q-ma-xs" v-for="item in images2" :key="item.id" style= "min-width:300px; max-width:300px">
           <q-card-section class="bg-grey-4">
-          <q-img style="width:300px; height:300px " class="q-mx-auto"
+          <q-img @click="show(item)" style="width:300px; height:300px " class="q-mx-auto"
             :src="item.imgurl"
           >
           <div class="absolute-bottom text-h5 text-center q-pa-xs">
@@ -68,7 +68,8 @@ import product from '../../api/admin/getbarang'
 export default {
   data() {
     return {
-    images:[]
+    images:[],
+    images2:[]
    }
   },
    computed: {
@@ -77,15 +78,24 @@ export default {
     }
   },
   beforeCreate() {
-         let self=this;
+      let self=this;
     product.getBarang(window )
-                .then(function (result) {
-                    console.log(result);
-                    self.images= result;
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-     },
+    .then(function (result) {
+    for (let i = 0; i < 3; i++) {
+    self.images.push(result[i])
+    }
+      console.log(result);
+      self.images2= result;
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
+    },
+     methods :{
+      show(item){
+      localStorage.setItem('id', item.id)
+      this.$router.push('/customer/pemesanan')
+    }
+  },
 }
 </script>
