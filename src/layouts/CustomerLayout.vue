@@ -82,9 +82,9 @@
        <div class="column" style="height: 10px"/>
 
         
-        <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="katalog">
-        </q-btn>
-        <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
+        <!-- <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="katalog">
+        </q-btn> -->
+        <!-- <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
           
           <q-menu
           transition-show="rotate"
@@ -112,7 +112,7 @@
             </q-item>
           </q-list>
         </q-menu>
-        </q-btn>
+        </q-btn> -->
         <q-btn-dropdown id="pojok" label="PENGATURAN" 
         flat class="bg-white text-black float-right">
         <q-list>

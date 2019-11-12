@@ -160,7 +160,7 @@
         
         <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="customer/katalog">
         </q-btn>
-        <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
+        <!-- <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
           
           <q-menu
           transition-show="rotate"
@@ -188,7 +188,7 @@
             </q-item>
           </q-list>
         </q-menu>
-        </q-btn>
+        </q-btn> -->
     </q-header>
 
    
