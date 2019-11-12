@@ -47,5 +47,15 @@ export default {
     .catch (function(err){
         console.log(err)
     })
+  },
+  getBarangByKategori(window, kategori){
+    return getApiNoAuth()
+    .get('/barangs/getBarangByKategori?kategori='+ kategori)
+    .then(function(response){
+      console.log("res",response)
+      return response
+    }).catch(function(err){
+      console.log(err)
+    })
   }
 }

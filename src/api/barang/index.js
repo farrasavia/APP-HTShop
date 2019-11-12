@@ -22,5 +22,15 @@ export default {
         .catch (function(err){
             console.log(err)
         })
+    },
+    getBarangbyKategori(window, kategori){
+        return getApiNoAuth()
+        .get('/barangs/getBarangbyKategori?kategori='+kategori)
+        .then(function(response){
+          console.log(response)
+          return response
+        }).catch(function(err){
+          console.log(err)
+        })
+      }
     }
-}
