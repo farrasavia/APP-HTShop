@@ -5,10 +5,10 @@
         v-model="tab"
         class="text-teal"
       >
-        <q-btn flat name="katalog"  label="Semua Barang"  style="color: black" to = "katalog"/>      
+        <q-btn flat name="katalog"  label="Semua Barang"  style="color: black" to = "katalog2"/>      
         <q-tab @click="findByKategori()" v-model="Blender" name="blender"   label="Blender" style="color: black"/>
-        <q-tab @click="findByKategori1()" v-model="Pisau" name="pisau"  label="Pisau" style="color: black"/>
-        <q-tab @click="findByKategori2()" v-model="Kompor" name="kompor"  label="Kompor" style="color: black" />
+        <q-tab @click="findByKategori2()" v-model="Pisau" name="pisau"  label="Pisau" style="color: black"/>
+        <q-tab name="kompor"  label="Kompor" style="color: black" />
       </q-tabs>
     </div>
   <q-card class="bawah">
@@ -81,6 +81,7 @@ export default {
   data() {
     return {
     images:[],
+   
    }
   },
    computed: {
@@ -89,45 +90,32 @@ export default {
     }
   },
   beforeCreate() {
+    let getBlender = localStorage.getItem('Blender')
          let self=this;
-    product.getBarang(window )
-                .then(function (result) {
-                    console.log(result);
-                    self.images= result;
+     product.getBarangByKategori(window, getBlender)
+        .then(function(result){
+          console.log("result:", result)
+          return self.images=result.data
                 })
                 .catch(function (err) {
                     console.log(err);
                 });
      },
-     methods:{
-      findByKategori(Blender){
-        localStorage.setItem('Blender','Blender')
-      console.log("blender:",this.Blender)
-      this.$router.push('/customer/katalog')
-      // try{
-      //   const self = this
-      // product.getBarangByKategori(window, self.Blender)
-      //   .then(function(result){
-      //     console.log("result:", result)
-      //     return self.images=result.data
-
-      //     // return self.images=result.data
-      //   })
-      // } catch (error){
-      //   console.log(error.message);
-      // }
-    },
-  
-  findByKategori1(Pisau){
-        localStorage.setItem('Pisau','Pisau')
-      console.log("pisau:",this.Pisau)
-      this.$router.push('/customer/pisau')
-  },
-  findByKategori2(Kompor){
-        localStorage.setItem('Kompor','Kompor')
-      console.log("kompor:",this.Kompor)
-      this.$router.push('/customer/kpp')
-  }
-  },
+  //    methods:{
+  //     findByKategori(Blender){
+  //     console.log("blender:",this.Blender)
+  //     try{
+  //       const self = this
+  //     product.getBarangByKategori(window, self.Blender)
+  //       .then(function(result){
+  //         console.log("result:", result)
+  //         return self.images=result.data
+  //         // return self.images=result.data
+  //       })
+  //     } catch (error){
+  //       console.log(error.message);
+  //     }
+  //   }
+  // },
 }
 </script>

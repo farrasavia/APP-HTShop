@@ -82,8 +82,8 @@
        <div class="column" style="height: 10px"/>
 
         
-        <!-- <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="katalog">
-        </q-btn> -->
+        <q-btn  color="black" label="Semua Barang" float flat class="q-mx-sm" to="katalog">
+        </q-btn>
         <!-- <q-btn  color="black" label="Kategori" float flat class="q-mx-sm" id="">
           
           <q-menu

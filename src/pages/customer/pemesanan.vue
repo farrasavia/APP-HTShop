@@ -210,8 +210,9 @@ export default {
         product1
         .getBarang(window)
         .then(function (result) {
-            console.log(result);
-            self.gambar2= result;
+            for (let i = 0; i < 3; i++) {
+            self.gambar2.push(result[i])
+    }
         })
         .catch(function (err) {
             console.log(err);

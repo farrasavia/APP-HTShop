@@ -18,7 +18,7 @@
     <div class="row " style="padding-top: 10px">
       <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
       <q-card-section class="bg-grey-4">
-          <q-img style="width:300px; height:300px " class="q-mx-auto"
+          <q-img @click="show(item)" style="width:300px; height:300px " class="q-mx-auto"
             :src="item.imgurl"
           >
           <div class="absolute-bottom text-h5 text-center q-pa-xs">
@@ -37,9 +37,9 @@
         </q-card-section>
       <q-separator class="garis2" color="black" style="height:5px"/>
         <div class="row " style="padding-top: 10px">
-         <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
+         <div class="col q-mx-auto  column q-ma-xs" v-for="item in images2" :key="item.id" style= "min-width:300px; max-width:300px">
           <q-card-section class="bg-grey-4">
-          <q-img style="width:300px; height:300px " class="q-mx-auto"
+          <q-img @click="show(item)" style="width:300px; height:300px " class="q-mx-auto"
             :src="item.imgurl"
           >
           <div class="absolute-bottom text-h5 text-center q-pa-xs">
@@ -81,7 +81,7 @@ export default {
   data() {
     return {
     images:[],
-   
+    images2:[]
    }
   },
    computed: {
@@ -90,32 +90,24 @@ export default {
     }
   },
   beforeCreate() {
-    let getBlender = localStorage.getItem('Blender')
-         let self=this;
-     product.getBarangByKategori(window, getBlender)
-        .then(function(result){
-          console.log("result:", result)
-          return self.images=result.data
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
-     },
-  //    methods:{
-  //     findByKategori(Blender){
-  //     console.log("blender:",this.Blender)
-  //     try{
-  //       const self = this
-  //     product.getBarangByKategori(window, self.Blender)
-  //       .then(function(result){
-  //         console.log("result:", result)
-  //         return self.images=result.data
-  //         // return self.images=result.data
-  //       })
-  //     } catch (error){
-  //       console.log(error.message);
-  //     }
-  //   }
-  // },
+      let self=this;
+    product.getBarang(window )
+    .then(function (result) {
+    for (let i = 0; i < 3; i++) {
+    self.images.push(result[i])
+    }
+      console.log(result);
+      self.images2= result;
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
+    },
+     methods :{
+      show(item){
+      localStorage.setItem('id', item.id)
+      this.$router.push('/customer/pemesanan')
+    }
+  },
 }
 </script>
