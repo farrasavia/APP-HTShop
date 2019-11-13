@@ -15,22 +15,92 @@
                         <q-card-section class="bg-grey-8">
                             <q-img  style="width:300px; height:300px " class="q-mx-auto"
                                 :src="item.imgurl"
-                            >
+                            > 
                             </q-img>   
                             <!-- <div v-for="item2 in produk" :key="item2.id"> -->
-                            <q-card-section class="bg-white">
+                            <!-- <q-card-section class="bg-white">
                             <div class="flex flex-center text-h6">{{item2.harga_barang}}</div>
-                            </q-card-section>               
+                            </q-card-section>                -->
                             <q-card-section class="bg-grey-8">
-                            <div class="flex flex-center text-h6">{{item2.nama_barang}}</div>
+                            <!-- <div class="flex flex-center text-h6">{{item2.nama_barang}}</div> -->
                             </q-card-section>
                             <!-- </div> -->
                             <q-card-section class="bg-white flex flex-center">
-                            <q-btn flat class="flex flex-center" color="grey-4" text-color="black" icon="attach_money">
+                            <q-btn @click="show(item)" flat class="flex flex-center" color="grey-4" text-color="black" icon="attach_money">
                                 <q-tooltip content-class="bg-grey-3 text-black" anchor="center left" self="center right" :offset="[10, 10]">
                                  BAYAR SEKARANG
                                 </q-tooltip>
                             </q-btn>
+                            <q-dialog v-model="alert">
+                            <q-card style="width:500px">
+                                <q-card-section>
+                                <div id="form" class="q-mx-auto" style="max-width: 800px">
+                                     <q-card-section>
+                                        <div class="q-mx-auto" style="width: 400px">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <q-img :src="item2.imgurl" style="width: 200px" />
+                                                </div>
+                                                <div class="col text-h7">
+                                                    Nama Produk : {{item2.nama_barang}}<br>
+                                                    Harga : Rp. {{item2.harga_barang}}<br>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </q-card-section>
+                                    <q-form class="q-gutter-md">
+                                        <q-input 
+                                            filled v-model="tanggal" 
+                                            type="date" 
+                                            hint="Tanggal" 
+                                            />
+                                        <q-input 
+                                            filled v-model="nama" 
+                                            label="Masukkan Nama *" 
+                                            hint="Nama Pemesan" 
+                                            lazy-rules 
+                                            :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                                        <q-input 
+                                            filled v-model="alamat" 
+                                            label="Masukkan Alamat *" 
+                                            hint="Alamat Pemesan" 
+                                            lazy-rules 
+                                            :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                                        <q-input 
+                                            filled v-model="telepon" 
+                                            label="Masukkan Telepon *" 
+                                            hint="Telepon Pemesan" 
+                                            lazy-rules 
+                                            :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                                        <div class="q-gutter-sm">
+                                            <q-radio v-model="pengiriman" val="JNE Express" label="JNE Express" color="black" />
+                                            <q-radio v-model="pengiriman" val="Paxel Express" label="Paxel Express" color="black" />
+                                            </div>
+                                            <div class="q-px-sm q-mt-sm">
+                                            Jasa Pengiriman : <strong>{{pengiriman}}</strong>
+                                            </div>
+                                        <q-input 
+                                            filled v-model="catatan" 
+                                            label="Masukkan Catatan *" 
+                                            hint="Catatan Pemesan" 
+                                            lazy-rules 
+                                            :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                                        <q-card-section>
+                                        <div class="flex flex-center">
+                                            <q-btn color="grey-6" label="Pesan Sekarang" />
+                                        </div>
+                                        </q-card-section>
+                                        <q-card-section>
+                                        <div class="flex flex-center">
+                                            <q-btn  label="Batal" color="grey-6" @click="batal()" />
+                                        </div>
+                                        </q-card-section>
+                                    </q-form>
+                                </div>
+                                </q-card-section>
+                            </q-card>
+                            </q-dialog>
                             <q-btn flat class="flex flex-center" color="grey-4" text-color="black" icon="delete" @click="onDelete(item.id)">
                                 <q-tooltip content-class="bg-grey-3 text-black" anchor="center right" self="center left" :offset="[10, 10]">
                                  BATALKAN PEMBELIAN
@@ -64,8 +134,8 @@ export default {
         return {
             pro:[],
             produk:[],
-            item2:[]
-
+            item2:[],
+            alert: false
         }
     },
      beforeCreate() {
@@ -115,6 +185,19 @@ export default {
                     })
                 console.log("delete called");
             }
+        },
+        show(cart) {
+            let self = this
+            console.log(cart.id_barang)
+            this.alert = true
+            barang.getproductbyId(window, cart.id_barang)
+                .then(function (result) {
+                    console.log(result)
+                    self.item2 = result;
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         },
     }
 }
