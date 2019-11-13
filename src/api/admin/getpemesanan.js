@@ -11,11 +11,20 @@ export default {
         console.log(err)
       })
   },
-  putPemesanan(window, id, status){
+  putPemesanan(window, nama_barang, tanggal, nama_pemesan, alamat_pemesan, telp_pemesan,
+        pengiriman, catatan, status, createAt, id){
       console.log('status =',status)
         return getApiNoAuth()
         .put('/pemesanans/'+id ,{
-        status : status
+            nama_barang:nama_barang,
+            tanggal:tanggal,
+            nama_pemesan:nama_pemesan,
+            alamat_pemesan:alamat_pemesan,
+            telp_pemesan:telp_pemesan,
+            pengiriman:pengiriman,
+            catatan:catatan,
+            status:status,
+            createAt:createAt
         })
         .then(function(response){
         console.log(response)
@@ -26,7 +35,7 @@ export default {
     },
     getStatusPemesanan(window){
       return getApiNoAuth()
-      .get('/pemesanans/getstatusPemesanan?status=true')
+      .get('/pemesanans/getStatusPemesanan?statuss=string')
       .then(function(response){
         console.log("res",response)
         return response.data

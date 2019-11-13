@@ -342,7 +342,7 @@ export default {
     },
     async mounted() {
         const response = await
-        pemesanaan.getPemesanan(window) 
+        pemesanaan.getStatusPemesanan(window) 
           {
             this.pemesanans = response
         }
@@ -374,6 +374,16 @@ export default {
             .catch(function (err) {
                 console.log(err);
             });
+            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.tanggal,
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
+            self.form.catatan, 'approve', self.form.createAt, self.form.id)
+            .then(function (result) {
+                self.$router.go('/dashboard/pemesanan')
+                console.log(result)
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
         },
 
 
@@ -384,6 +394,17 @@ export default {
             approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
             self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
             self.form.catatan, false, self.form.createAt, self.form.id)
+            .then(function (result) {
+                self.$router.go('/dashboard/pemesanan')
+                console.log(result)
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
+            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.tanggal,
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
+            self.form.catatan, 'reject', self.form.createAt, self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
