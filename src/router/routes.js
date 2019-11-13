@@ -39,7 +39,8 @@ const routes = [
     { path: 'kulkas', component: () => import('pages/customer/kulkas.vue') },
     { path: 'pemesanan', component: () => import('pages/customer/pemesanan.vue') },
     { path: 'pemesanan2', component: () => import('pages/customer/pemesanan2.vue') },
-      { path: 'akhir', component: () => import('pages/customer/akhir.vue') }
+      { path: 'akhir', component: () => import('pages/customer/akhir.vue') },
+      { path: 'keranjang', component: () => import('pages/customer/keranjang.vue') }
     ]
   },
   {
@@ -48,7 +49,7 @@ const routes = [
      children:[
        { path:'', component: () => import('pages/admin/dashboardAdmin.vue')},
        { path: 'tabelbarang', component: () => import('pages/admin/tabelbarang.vue')},
-       { path: 'input', component: () => import('pages/admin/input.vue')},
+       { path: 'input', component: () => import('pages/uploader/upload.vue')},
        { path: 'pemesanan', component: () => import('pages/admin/pemesanan.vue')}
      ]
   },

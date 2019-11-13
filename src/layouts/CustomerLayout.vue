@@ -124,8 +124,10 @@
           </q-item>
         </q-list>
       </q-btn-dropdown>
-        <q-btn id="pojok" class="float-right" flat round icon="shopping_cart" color="white" text-color="black" @click="fixed = true" />
-        <q-dialog v-model="fixed">
+        <router-link to="/customer/keranjang">
+        <q-btn id="pojok" class="float-right" flat round icon="shopping_cart" color="white" text-color="black" />
+        </router-link>
+        <!-- <q-dialog v-model="fixed">
       <q-card style="width:700px">
         <q-toolbar class="bg-primary text-black shadow-2">
       <q-toolbar-title>Tabel Barang</q-toolbar-title>
@@ -194,7 +196,7 @@
           <q-btn flat label="Accept" color="blue" v-close-popup />
         </q-card-actions>
       </q-card>
-    </q-dialog>
+    </q-dialog> -->
     </q-header>
 
     <!-- <q-drawer
@@ -360,7 +362,7 @@
 export default {
   data () {
     return {
-      fixed: false
+      // fixed: false
      
     }
   },
