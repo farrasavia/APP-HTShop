@@ -3,7 +3,7 @@ import { getApiNoAuth } from "../utils"
 export default {
 
     downloadImage(window, file){
-        return getApiNoAuthLB()
+        return getApiNoAuth()
         .get('container/images/download/'+file)
         .then(function(response){
             return response.config
@@ -13,7 +13,7 @@ export default {
         })
     },
     getproductbyId(window, id){
-        
+        console.log(id)
         return getApiNoAuth()
         .get('barangs/' + id )
         .then(function(response){
