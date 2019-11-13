@@ -72,7 +72,7 @@
       </q-card-section>
     </q-card> -->
 
-    <q-card class="bawah">
+    <q-card class="bawah" @click="getBarang()">
         <q-card-section >
           <div class="text-h6 text-center">Produk Terbaru</div>
         </q-card-section>
@@ -122,7 +122,8 @@ export default {
    data () {
     return {
       slide: 1,
-       images:[]
+       images:[],
+       search:[]
     }
   },
    computed: {
@@ -145,13 +146,26 @@ export default {
       .catch(function (err) {
           console.log(err);
       });
+
     },
   // name: 'PageIndex',
   methods :{
       show(item){
       localStorage.setItem('id', item.id)
       this.$router.push('/customer/pemesanan')
+    },
+    getBarang(){
+      let getsearch = localStorage.getItem('search')
+         let self=this;
+     product.getBarangByNama(window, getsearch)
+        .then(function(result){
+          console.log("result:", result)
+          return self.images=result.data
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
     }
-  },
+  }
 }
 </script>
