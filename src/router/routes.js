@@ -31,6 +31,7 @@ const routes = [
     children:[
     { path: '', component: () => import('pages/Index.vue')}, 
     { path: 'katalog', component: () => import('pages/customer/katalog.vue') },
+    { path: 'search', component: () => import('pages/customer/search.vue') },
     { path: 'kpp', component: () => import('pages/customer/kpp.vue') },
     { path: 'pisau', component: () => import('pages/customer/pisau.vue') },
     { path: 'rice', component: () => import('pages/customer/rice.vue') },

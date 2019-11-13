@@ -419,6 +419,7 @@ export default {
       findByName(search) {
           console.log(this.search)
           localStorage.setItem('search', this.search)
+          this.$router.push('/customer/search')
         //   
       }
       }

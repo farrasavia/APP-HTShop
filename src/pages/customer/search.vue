@@ -13,7 +13,7 @@
     </div>
   <q-card class="bawah">
     <q-card-section >
-      <div class="text-h4 text-center">PRODUK TERBARU</div>
+      <div class="text-h4 text-center">Hasil SEARCH : {{'search'}}</div>
     </q-card-section>
     <div class="row " style="padding-top: 10px">
       <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
@@ -31,7 +31,7 @@
       </q-card-section>
       </div>
     </div>
-      <q-separator class="garis" color="black" style="height:5px"/>
+      <!-- <q-separator class="garis" color="black" style="height:5px"/>
         <q-card-section >
           <div class="text-h4 text-center">SEMUA PRODUK</div>
         </q-card-section>
@@ -51,7 +51,7 @@
         </q-card-section>
           </q-card-section>
       </div>
-    </div>
+    </div> -->
         <div class="q-pa-lg flex flex-center">
             <q-pagination
             v-model="current"
@@ -90,30 +90,32 @@ export default {
     }
   },
   beforeCreate() {
-      let self=this;
-    product.getBarang(window )
-    .then(function (result) {
-    for (let i = 0; i < 3; i++) {
-    self.images.push(result[i])
-    }
-      console.log(result);
-      self.images2= result;
-    })
-    .catch(function (err) {
-        console.log(err);
-    });
-  },
-    //  getBarang(){
-    //   let getsearch = localStorage.getItem('search')
-    //      let self=this;
-    //  product.getBarangByNama(window, getsearch)
-    //     .then(function(result){
-    //       console.log("result:", result)
-    //       return self.images=result.data
-    //             })
-    //             .catch(function (err) {
-    //                 console.log(err);
-    //             });
+  //     let self=this;
+  //   product.getBarang(window )
+  //   .then(function (result) {
+  //   for (let i = 0; i < 3; i++) {
+  //   self.images.push(result[i])
+  //   }
+  //     console.log(result);
+  //     self.images2= result;
+  //   })
+  //   .catch(function (err) {
+  //       console.log(err);
+  //   });
+  // },
+  //    getBarang(){
+      let getsearch = localStorage.getItem('search')
+         let self=this;
+     product.getBarangByNama(window, getsearch)
+        .then(function(result){
+          console.log("result:", result)
+          return self.images=result.data
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+     },
+
          methods :{
       show(item){
       localStorage.setItem('id', item.id)
