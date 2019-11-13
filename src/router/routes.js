@@ -27,7 +27,6 @@ const routes = [
   },
   {
     path: '/customer',
-    beforeEnter: requireAuth,
     component:()=> import('layouts/CustomerLayout.vue'),
     children:[
     { path: '', component: () => import('pages/Index.vue')}, 

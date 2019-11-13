@@ -22,14 +22,14 @@
 
     <div id="search">
         <q-input
-        
+        type="text"
         class="bg-white "
         v-model="search"
         filled
-        placeholder="Search">
+        placeholder="search">
         <template v-slot:append >
           
-          <q-icon name="search"/>
+          <q-icon name="search" @click="findByName()"/>
         </template>
       </q-input>
     </div>
@@ -346,6 +346,9 @@
 
 <script>
 import login_api from '../api/Login/index'
+import containeer from '../api/admin/container';
+import {downloadImage} from '../api/upload/index';
+import product from '../api/admin/getbarang'
 export default {
   data () {
     return {
@@ -353,9 +356,32 @@ export default {
       password: "",
       isPwd: true,
       fixed: false,
-      accept: false
+      accept: false,
+      images:[],
+      search:[]
     }
   },
+   computed: {
+    getImgs() {
+      this.getImg()
+    },
+     beforeCreate() {
+    let self=this;
+    product
+    .getBarang(window )
+      .then(function (result) {
+          console.log(result);
+
+          for (let i = 0; i < 3; i++) {
+            self.images.push(result[i])
+          }
+  
+      })
+      .catch(function (err) {
+          console.log(err);
+      });
+    }
+   },
 
   methods: {
     onSubmit () {
@@ -380,8 +406,21 @@ export default {
             .catch(function(err){
                 console.log(err)
             });
+      },
+      //       findByName(search){
+      //   localStorage.setItem('Search',search)
+      // console.log("search:",this.search)
+      // this.$router.push('/')
+      // }
     
+      // },
+
+      
+      findByName(search) {
+          console.log(this.search)
+          localStorage.setItem('search', this.search)
+        //   
       }
-    }
+      }
 }
 </script>

@@ -57,5 +57,16 @@ export default {
     }).catch(function(err){
       console.log(err)
     })
+  },
+  getBarangByNama(window, nama_barang){
+    return getApiNoAuth()
+    .get('/barangs/getBarangByNama?nama='+ nama_barang)
+    .then(function(response){
+      console.log("res",response)
+      return response
+    }).catch(function(err){
+      console.log(err)
+    })
   }
+  
 }
