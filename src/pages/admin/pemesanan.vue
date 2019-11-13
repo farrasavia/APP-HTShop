@@ -98,15 +98,15 @@
             <q-card-section>
               <div id="form" class="q-mx-auto" style="width: 600px">
                 <q-form class="q-gutter-md">
-                    <q-input filled v-model="form.nama_barang" label="Nama Barang *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.tanggal" label="Kategori *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.nama_pemesan" label="Jumlah barang *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.alamat_pemesan" label="Harga *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.telp_pemesan" label="Kondisi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.pengiriman" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.catatan" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.status" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.createAt" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.nama_barang" label="Nama Barang *" hint="Nama Barang" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.tanggal" label="tanggal pesan *" hint="Tanggal pesan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.nama_pemesan" label="Nama Pemesan *" hint="Nama Pemesan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.alamat_pemesan" label="alamat *" hint="alamat tujuan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.telp_pemesan" label="No.Telepon *" hint="Nomor telepon" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.pengiriman" label="Kurir Pengiriman *" hint="Dikirim melalui" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.catatan" label="Catatan *" hint="Catatan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <!-- <q-input filled v-model="form.status" label="Status *" hint="Status pesanan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" /> -->
+                    <q-input filled v-model="form.createAt" label="tanggal dibuat *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     
                     <!-- Button awal -->
                     <div>
@@ -223,7 +223,7 @@ export default {
         return {
             pemesanans: [{}],
             pemesanan_fnl:[{}],
-            status: false,
+            
             dialog: false,
             form:{
                 nama_barang:'',
@@ -347,20 +347,26 @@ export default {
             this.pemesanans = response
         }
     },
-        beforeCreate(){
+    // beforeCreate(){
+    //   let self=this;
+    //   pemesanaan.getStatusPemesanan(window).then(function(result){
+    //     self.pemesanans=result
+    //   })
+    // },
+    beforeCreate(){
       let self=this;
       approval.getPemesananFnl(window).then(function(result){
         self.pemesanan_fnl=result
       })
         },
     methods : {
-            update() {
+        update() {
             const self = this
 
 
             approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
-            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-            self.form.catatan, self.form.status, self.form.createAt, self.form.id)
+                self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
+                self.form.catatan, true, self.form.createAt, self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
@@ -369,7 +375,24 @@ export default {
                 console.log(err);
             });
         },
-           edit(pemesanan) {
+
+
+     reject() {
+            const self = this
+
+
+            approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
+            self.form.catatan, false, self.form.createAt, self.form.id)
+            .then(function (result) {
+                self.$router.go('/dashboard/pemesanan')
+                console.log(result)
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        },
+    edit(pemesanan) {
       try {
         this.dialog = true
         this.updateSubmit = true
@@ -382,43 +405,6 @@ export default {
         this.form.pengiriman = pemesanan.pengiriman
         this.form.catatan = pemesanan.catatan
         this.form.status = pemesanan.status
-        this.form.createAt = pemesanan.createAt
-      }
-      catch (error) 
-        {
-          console.log(error.message)
-        }
-            
-    },
-
-     reject() {
-            const self = this
-
-
-            approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
-            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-            self.form.catatan, self.form.status, self.form.createAt, self.form.id)
-            .then(function (result) {
-                self.$router.go('/dashboard/pemesanan')
-                console.log(result)
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-        },
-           edit(pemesanan) {
-      try {
-        this.dialog = true
-        this.updateSubmit = true
-        this.form.id = pemesanan.id
-        this.form.nama_barang = pemesanan.nama_barang
-        this.form.tanggal = pemesanan.tanggal
-        this.form.nama_pemesan = pemesanan.nama_pemesan
-        this.form.alamat_pemesan = pemesanan.alamat_pemesan
-        this.form.telp_pemesan = pemesanan.telp_pemesan
-        this.form.pengiriman = pemesanan.pengiriman
-        this.form.catatan = pemesanan.catatan
-        this.form.status = false
         this.form.createAt = pemesanan.createAt
       }
       catch (error) 
