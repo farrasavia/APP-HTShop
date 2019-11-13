@@ -23,5 +23,15 @@ export default {
         }).catch(function(err){
         console.log(err)
         })
+    },
+    getStatusPemesanan(window){
+      return getApiNoAuth()
+      .get('/pemesanans/getstatusPemesanan?status=true')
+      .then(function(response){
+        console.log("res",response)
+        return response.data
+      }).catch(function(err){
+        console.log(err)
+      })
     }
 }
