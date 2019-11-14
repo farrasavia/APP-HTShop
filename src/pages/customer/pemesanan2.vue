@@ -24,7 +24,7 @@
         <div class="flex flex-center text-h6" style="color:black">{{images.nama_barang}}</div>
         </q-card-section>
         <div class="flex flex-center text-h6" style="margin-top:3%">
-         <q-btn color="grey-6" label="Beli" @click="alert = true"/>
+         <q-btn color="grey-6" label="Beli" @click="confirm = true"/>
         </div>
         </q-card-section>
         </q-card>
@@ -124,6 +124,19 @@
             </q-card-section>
         </q-card>
 
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="flex flex-center">
+          <span class="flex flex-center text-h5">Barang Di Masukkan Ke Dalam Keranjang</span>
+          <span class="flex flex-center text-h5">Masuk Ke Keranjang Untuk Proses Pembayaran</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Batal" color="black" v-close-popup />
+          <q-btn flat label="Lanjut Ke Keranjang" color="black" v-close-popup @click="cart(images)"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
 
     <q-card dark bordered class="bg-white">
     <div class="row" >
@@ -168,6 +181,7 @@ import product from '../../api/barang/index';
 import product1 from '../../api/admin/getbarang';
 import containeer from '../../api/admin/container';
 import {downloadImage} from '../../api/upload/index';
+import cart from '../../api/cart/index';
 
 export default {
       data () {
@@ -176,6 +190,7 @@ export default {
       gambar2:[],
       slide: 1,
       alert: false,
+      confirm: false,
         form: {
                 nama: '',
                 alamat: '',
@@ -221,23 +236,25 @@ export default {
       },
 
     methods : {
-      //  add(){
-      //   let getIdProduct= localStorage.getItem('id_barang');
-      //   let getIdCustomer= localStorage.getItem('id');
-      //   let self=this;
-        
-
-      //   cart.postCart(window, getIdProduct, getIdCustomer)
-      //   .then(function(result)
-      //       {
-      //         if(result){
-      //             self.$router.push('/customer/pemesanan');
-      //         } 
-      //       })
-      //   .catch(function(err){
-      //       console.log(err);
-      //   });
-      // },
+      cart(images) {
+        console.log(images.imgurl)
+        this.confirm = true
+        let getIdCustomer= localStorage.getItem('id_customer');
+        let getIdBarang= localStorage.getItem('id');
+        let getimgurl= localStorage.getItem('imgurl');
+        let self=this;
+        console.log(getIdCustomer, getIdBarang, getimgurl)
+        cart.postCart(window, getIdCustomer, getIdBarang, getimgurl)
+        .then(function(result)
+            {
+              if(result){
+                  self.$router.push('/customer/keranjang');
+              } 
+            })
+        .catch(function(err){
+            console.log(err);
+        });
+      },
       show(gambar){
         console.log(gambar)
       localStorage.setItem('id', gambar.id)

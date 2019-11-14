@@ -1,7 +1,8 @@
 <template>
 
-    <div class="flex flex-center">
-      <div class="q-pa-md" style="max-width: 500px; width:100%">
+  <div class="flex flex-center">
+    <q-card style="width:600px; height: 1200px " >
+      <div class="flex flex-center" style="max-width: 600px; width:100%">
         <h4 style="text-align:center;">INPUT PRODUK</h4>
         <q-form class="q-gutter-md">
   
@@ -18,6 +19,7 @@
         <q-radio v-model="kategori" val="Blender" label="Blender" color="black" />
         <q-radio v-model="kategori" val="Pisau" label="Pisau" color="black" />
         <q-radio v-model="kategori" val="Kompor" label="Kompor" color="black" />
+        <q-radio v-model="kategori" val="Kulkas" label="Kulkas" color="black" />
         <q-radio v-model="kategori" val="Rice Cooker" label="Rice Cooker" color="black" />
        </div>
         <div class="q-px-sm q-mt-sm">
@@ -93,7 +95,8 @@
           </div>
         </q-form>
       </div>
-    </div>
+    </q-card>
+  </div>
 
 </template>
 

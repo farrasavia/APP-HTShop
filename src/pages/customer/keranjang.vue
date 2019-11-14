@@ -51,12 +51,17 @@
                                     </q-card-section>
                                     <q-form class="q-gutter-md">
                                         <q-input 
-                                            filled v-model="tanggal" 
+                                            filled v-model="form.tanggal" 
                                             type="date" 
                                             hint="Tanggal" 
                                             />
                                         <q-input 
-                                            filled v-model="nama" 
+                                            filled v-model="form.quantity" 
+                                            type="number" 
+                                            hint="Jumlah Barang" 
+                                            />
+                                        <q-input 
+                                            filled v-model="form.nama" 
                                             label="Masukkan Nama *" 
                                             hint="Nama Pemesan" 
                                             lazy-rules 
@@ -68,24 +73,29 @@
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
                                         <q-input 
-                                            filled v-model="telepon" 
+                                            filled v-model="form.telepon" 
                                             label="Masukkan Telepon *" 
                                             hint="Telepon Pemesan" 
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
                                         <div class="q-gutter-sm">
-                                            <q-radio v-model="pengiriman" val="JNE Express" label="JNE Express" color="black" />
-                                            <q-radio v-model="pengiriman" val="Paxel Express" label="Paxel Express" color="black" />
+                                            <q-radio v-model="form.pengiriman" val="JNE Express" label="JNE Express" color="black" />
+                                            <q-radio v-model="form.pengiriman" val="Paxel Express" label="Paxel Express" color="black" />
                                             </div>
                                             <div class="q-px-sm q-mt-sm">
-                                            Jasa Pengiriman : <strong>{{pengiriman}}</strong>
+                                            Jasa Pengiriman : <strong>{{form.pengiriman}}</strong>
                                             </div>
                                         <q-input 
-                                            filled v-model="catatan" 
+                                            filled v-model="form.catatan" 
                                             label="Masukkan Catatan *" 
                                             hint="Catatan Pemesan" 
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                                        <q-input 
+                                            filled v-model="form.harga"  
+                                            type="number"
+                                            hint="Total Harga" 
+                                            />
                                         <q-card-section>
                                         <div class="flex flex-center">
                                             <q-btn color="grey-6" label="Pesan Sekarang" />
@@ -135,7 +145,16 @@ export default {
             pro:[],
             produk:[],
             item2:[],
-            alert: false
+            alert: false,
+            form : {
+                tanggal : '',
+                nama : '',
+                quantity : '',
+                alamat : '',
+                pengiriman : '',
+                catatan : '',
+                harga : ''
+            }
         }
     },
      beforeCreate() {
