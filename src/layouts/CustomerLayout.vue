@@ -20,19 +20,6 @@
           </q-btn>
          </q-toolbar-title>
 
-    <div id="search">
-        <q-input
-        
-        class="bg-white "
-        v-model="search"
-        filled
-        placeholder="Search">
-        <template v-slot:append >
-          
-          <q-icon name="search"/>
-        </template>
-      </q-input>
-    </div>
         
           <!-- <q-menu  
           transition-show="rotate"
@@ -295,7 +282,7 @@
               <div class="text-left text-caption">Berlangganan untuk menerima pembaruan,</div>
               <div class="text-left text-caption">akses ke penawaran eksklusif, dan banyak lagi.</div>
               <div style="height: 10px"/>
-               <q-input outlined v-model="ph" placeholder="Enter your email addres" :dense="dense" style="300px" />
+               <q-input outlined placeholder="Enter your email addres"/>
                <div style="height: 10px"/>
                <q-btn style="background: #283b39; color: white" label="Langganan" />
             </div>
@@ -338,12 +325,7 @@
     border: 10px solid rgb(0, 0, 0);
 }
 
- #search{
-  width: 400px !important;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px
-} 
+ 
 
 /* #pojok{
   left: 1025px;
