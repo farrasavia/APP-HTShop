@@ -72,18 +72,20 @@
       </q-card-section>
     </q-card> -->
 
-    <q-card class="bawah" @click="getBarang()">
+    <q-card class="bawah bg-white">
         <q-card-section >
           <div class="text-h6 text-center">Produk Terbaru</div>
+          <q-separator style="height:2px" color="black"/>
         </q-card-section>
              <div class="row " style="padding-top: 10px">
-               <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:400px; max-width:400px">
+               <div class="col q-mx-auto  column q-ma-xs" v-for="item in images" :key="item.id" style= "min-width:300px; max-width:300px">
                 <q-card-section class="bg-grey-4" @click="show(item)">
-                    <q-img style="width:400px; height:400px " class="q-mx-auto"
+                    <q-img style="width:300px; height:300px " class="q-mx-auto"
                       :src="item.imgurl"
                     />
                     <q-separator/>
                     <div class="align text-body2 q-mt-sm text-center"><b> {{item.nama_barang}}</b></div>
+                    <q-separator style="height:2px" color="black"/>
                     <div class="align text-caption text-center">Rp.  {{item.harga_barang}} </div>    
                 </q-card-section>
                 </div>

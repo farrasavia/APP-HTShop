@@ -1,9 +1,9 @@
 <template>
 
-  <q-layout view="hhh lpR fff" class="bg-grey-4">
+  <q-layout view="hhh lpR fff" class="bg-grey-3">
     
     
-    <q-header elevated>
+    <q-header elevated class="bg-white">
       <q-toolbar>
         <!-- <q-btn
           flat
@@ -282,7 +282,7 @@
               <div class="text-left text-caption">Berlangganan untuk menerima pembaruan,</div>
               <div class="text-left text-caption">akses ke penawaran eksklusif, dan banyak lagi.</div>
               <div style="height: 10px"/>
-               <q-input outlined v-model="ph" placeholder="Enter your email addres" :dense="dense" style="300px" />
+               <q-input outlined placeholder="Enter your email addres"/>
                <div style="height: 10px"/>
                <q-btn style="background: #283b39; color: white" label="Langganan" />
             </div>
@@ -290,7 +290,7 @@
          <div class="row" style="height: 100px">
           <div class="col-1 q-gutter-xl "/>
           <div class="col-10">
-            <div class="column" style="100px">
+            <div class="column">
               <div class="col-1">
                 <div class="text-left text-overline">Kenali kami lebih baik dengan mengikuti pegangan media</div>
                 <div class="text-left text-overline">sosial kami!</div>
@@ -306,10 +306,6 @@
                 <div class="text-left text-overline">@Half-Twelve</div>
               </div>
               <div class="col-10"/>
-              <div class="col-auto justify-end">
-                <q-img src="./statics/master.png" style="width:30px"/>
-                <q-img src="./statics/visa.png" style="width:30px"/>
-              </div>
             </div>
           </div>
 
