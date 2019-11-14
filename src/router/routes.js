@@ -5,9 +5,7 @@ const requireAuth = (to, from, next) => {
   if (getRole === null) { 
       alert('Silahkan Untuk Login Untuk Melihat Lebih Banyak Melihat Produk')
     next({
-      
-      path: '/'
-      
+      path: '/'  
     })
   } 
    else {

@@ -29,31 +29,31 @@
                     Rincian Pemesanan : 
                     </q-card-section>
                     <q-card-section class="text-h7" style= "color : black">
-                    
+                   
                     </q-card-section>
                     <q-card-section class="text-h6" style= "color : black">
                     Nama Barang 
                     </q-card-section>
                     <q-card-section class="text-h7" style= "color : black">
-                    
+                     {{pesan.nama_barang}}
                     </q-card-section>
                     <q-card-section class="text-h6" style= "color : black">
                     Nama Pemesan 
                     </q-card-section>
                     <q-card-section class="text-h7" style= "color : black">
-                    
+                    {{pesan.nama_barang}}
                     </q-card-section>
                     <q-card-section class="text-h6" style= "color : black">
                     Alamat Pemesan
                     </q-card-section>
                     <q-card-section class="text-h7" style= "color : black">
-                    
+                    {{pesan.alamat_pemesan}}
                     </q-card-section>
                     <q-card-section class="text-h6" style= "color : black">
                     Telepon Pemesan
                     </q-card-section>
                     <q-card-section class="text-h7" style= "color : black">
-                    
+                    {{pesan.alamat_pemesan}}
                     </q-card-section>            
                     <q-card-section class="text-h6" style= "color : black">
                     Total Harga
@@ -110,11 +110,29 @@
 </style>
 
 <script>
+
+import pemesanan from '../../api/pemesanan_final/index'
+
 export default {
    data () {
     return {
-      slide: 1
+      slide: 1,
+      pesan:[]
     }
-  } 
+  },
+  beforeCreate() {
+    let getId= localStorage.getItem('id');
+    console.log(getId)
+      let self=this;
+      pemesanan
+      .getPemesananById(window, getId )
+        .then(function (result) {
+            console.log(result);
+            self.pesan= result;
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    }
 }
 </script>

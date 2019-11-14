@@ -36,9 +36,14 @@
               <q-item-label class="q-mt-sm">Keterangan</q-item-label>
           </q-item-section>
 
+          <q-item-section top class="col-1 gt-xm">
+              <q-item-label class="q-mt-sm text-center">Gambar</q-item-label>
+          </q-item-section>
+
           <q-item-section top class="col-2 gt-xm">
               <q-item-label class="q-mt-sm text-center">Aksi</q-item-label>
           </q-item-section>
+
         </q-item>
 
         <q-item v-for="(barang, index) in barangs" :key="barang.id" class="bg-grey-3" line="1">
@@ -70,6 +75,13 @@
               <q-item-label class="q-mt-sm">{{barang.keterangan}}</q-item-label>
           </q-item-section>
 
+          <q-item-section top class="col-1 gt-sm flex flex-center">
+          
+           <q-img style="width:30px;"
+                          :src="barang.imgurl"
+                          />
+          </q-item-section>
+
           <q-item-section top class="col-2 gt-xm">
             <div class="q-mt-sm flex flex-center" style="align : right">
               <q-btn class="gt-xs" size="12px" flat dense round icon="delete" @click="onDelete(barang.id)" />
@@ -77,6 +89,7 @@
               <q-btn size="12px" flat dense round icon="more_vert" />
             </div>
           </q-item-section>
+
         </q-item>
       </q-list>
 
@@ -91,6 +104,7 @@
                     <q-input filled v-model="form.harga_barang" label="Harga *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.kondisi" label="Kondisi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.keterangan" label="Keterangan / Deskripsi *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.imgurl" label="*" hint="Gambar" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     
                     <!-- Button awal -->
                     <div>
@@ -131,7 +145,7 @@ export default {
         quantity:'',
         harga_barang:'',
         kondisi:'',
-        keterangan:''
+        keterangan:'',
       },
       columns: [
         {
@@ -241,6 +255,7 @@ export default {
         this.form.harga_barang = barang.harga_barang
         this.form.kondisi = barang.kondisi
         this.form.keterangan = barang.keterangan
+        this.form.imgurl = barang.imgurl
       }
       catch (error) 
         {
@@ -256,7 +271,7 @@ export default {
     update(id) {
         const self = this
         baraang.putBarang(window, self.form.id, self.form.nama_barang, self.form.kategori, 
-        self.form.quantity, self.form.harga_barang, self.form.kondisi, self.form.keterangan)
+        self.form.quantity, self.form.harga_barang, self.form.kondisi, self.form.keterangan, self.form.imgurl)
         .then(function (result) {
             self.$router.go('/dashboard/tabelbarang')
         })

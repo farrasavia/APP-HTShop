@@ -21,7 +21,7 @@ export default {
         console.log(err)
     })
   },
-  putBarang(window, id, nama_barang, kategori, quantity, harga_barang, kondisi, keterangan){
+  putBarang(window, id, nama_barang, kategori, quantity, harga_barang, kondisi, keterangan, imgurl){
     return getApiNoAuth()
     .put('/barangs/'+id ,{
         nama_barang:nama_barang,
@@ -29,7 +29,8 @@ export default {
         quantity:quantity,
         harga_barang:harga_barang,
         kondisi:kondisi,
-        keterangan:keterangan
+        keterangan:keterangan,
+        imgurl: imgurl
     })
     .then(function(response){
         console.log(response)
