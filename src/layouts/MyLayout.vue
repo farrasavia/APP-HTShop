@@ -390,9 +390,9 @@ export default {
                   localStorage.setItem('email', result.email)
                   localStorage.setItem('role', result.role)
                   localStorage.setItem('id_customer', result.id)
-                if(result.role=='admin'){
+                if(result.role==='admin'){
                   self.$router.push('/dashboard')
-                  } else if (result.role=='owner'){
+                  } else if (result.role==='owner'){
                     self.$router.push('/dashboard')
                   } else {
                     self.$router.push("/customer/katalog");
