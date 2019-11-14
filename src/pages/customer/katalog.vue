@@ -136,7 +136,7 @@ export default {
     //                 console.log(err);
     //             });
          methods :{
-      show(item){
+    show(item){
       localStorage.setItem('id', item.id)
       this.$router.push('/customer/pemesanan')
     },

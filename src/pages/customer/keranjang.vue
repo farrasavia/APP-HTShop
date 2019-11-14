@@ -31,7 +31,7 @@
                                  BAYAR SEKARANG
                                 </q-tooltip>
                             </q-btn>
-                            <q-dialog v-model="alert">
+                            <q-dialog v-model="dialog" persistent>
                             <q-card style="width:500px">
                                 <q-card-section>
                                 <div id="form" class="q-mx-auto" style="max-width: 800px">
@@ -50,11 +50,6 @@
                                         </div>
                                     </q-card-section>
                                     <q-form class="q-gutter-md">
-                                        <q-input 
-                                            filled v-model="form.tanggal" 
-                                            type="date" 
-                                            hint="Tanggal" 
-                                            />
                                         <q-input 
                                             filled v-model="form.quantity" 
                                             type="number" 
@@ -91,14 +86,12 @@
                                             hint="Catatan Pemesan" 
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                                        <q-input 
-                                            filled v-model="form.harga"  
-                                            type="number"
-                                            hint="Total Harga" 
-                                            />
+                                         <div class="col-6">
+                                        <div class="text-right text-bold">Rp. {{total}}</div> 
+                                        </div>
                                         <q-card-section>
                                         <div class="flex flex-center">
-                                            <q-btn color="grey-6" label="Pesan Sekarang" />
+                                            <q-btn color="grey-6" label="Pesan Sekarang" @click="post_pemesanan()" />
                                         </div>
                                         </q-card-section>
                                         <q-card-section>
@@ -138,6 +131,7 @@
 import cart from '../../api/cart/index'
 import barang from '../../api/barang/index'
 import gbr from '../../api/upload/index'
+import pemesanans from '../../api/admin/getpemesanan'
 
 export default {
     data() {
@@ -145,17 +139,124 @@ export default {
             pro:[],
             produk:[],
             item2:[],
-            alert: false,
+            pemesanan:[],
+            dialog: false,
             form : {
-                tanggal : '',
                 nama : '',
                 quantity : '',
                 alamat : '',
                 pengiriman : '',
                 catatan : '',
-                harga : ''
-            }
+                total : ''
+            },
+            columns: [
+                {
+                name: 'nama_barang',
+                required: true,
+                label: 'Nama Barang',
+                align: 'left',
+                field:row => row.nama_barang,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'tanggal',
+                required: true,
+                label: 'Tanggal',
+                align: 'left',
+                field:row => row.tanggal,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'nama_pemesan',
+                required: true,
+                label: 'Nama Pemesan',
+                align: 'left',
+                field:row => row.nama_pemesan,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'alamat_pemesan',
+                required: true,
+                label: 'Alamat',
+                align: 'left',
+                field:row => row.alamat_pemesan,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'telp_pemesan',
+                required: true,
+                label: 'Telepon',
+                align: 'left',
+                field:row => row.telp_pemesan,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'pengiriman',
+                required: true,
+                label: 'Pengiriman',
+                align: 'left',
+                field:row => row.pengiriman,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'catatan',
+                required: true,
+                label: 'Catatan',
+                align: 'left',
+                field:row => row.catatan,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'status',
+                required: true,
+                label: 'Status',
+                align: 'left',
+                field:row => row.status,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
+                name: 'crateAt',
+                required: true,
+                label: 'Creat At',
+                align: 'left',
+                field:row => row.creatAt,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                }
+            ],
         }
+    },
+    computed:{
+        total:function() {
+        return parseInt(this.item2.harga_barang) * parseInt(this.form.quantity)
+    },
+
     },
      beforeCreate() {
         let getIdCustomer = localStorage.getItem('id_customer');
@@ -183,6 +284,26 @@ export default {
             });
     },
     methods: {
+
+        batal() {
+      {
+        this.dialog = false
+
+      }
+    },
+
+        post_pemesanan(){
+        const self = this
+        pemesanans.postPemesanan(window, self.nama_barang, self.quantity, self.nama_pemesan, self.alamat_pemesan, 
+        self.telp_pemesan, self.pengiriman, self.catatan,self.total, self.status, self.createAt)
+            .then(function (result) {
+                self.$router.go('/customer/akhir')
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+        },
+
         // Method untuk delete data By ID
         onDelete(id) {
             console.log("id produk", id)
@@ -207,8 +328,9 @@ export default {
         },
         show(cart) {
             let self = this
+            localStorage.setItem('id_cart', cart.id);
             console.log(cart.id_barang)
-            this.alert = true
+            this.dialog = true
             barang.getproductbyId(window, cart.id_barang)
                 .then(function (result) {
                     console.log(result)
@@ -218,6 +340,8 @@ export default {
                     console.log(err);
                 });
         },
+        
+        
     }
 }
 </script>
