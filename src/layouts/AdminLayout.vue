@@ -92,18 +92,15 @@ export default {
   },
   async  mounted(){
     let getRole = await localStorage.getItem('role');
-    if(getRole !='admin' || getRole ==='owner'){
-         this.$router.push('/owner/')
+    if(getRole ==='admin'){
+         this.$router.push('/dashboard')
       }
-      else if(getRole !='admin' || getRole ==='customer'){
-         this.$router.push('/')
-      }
-      else if(getRole ===null){
-         this.$router.push('/admin')
-      } 
-      else {
-        alert('anda login sebagai admin')
-      }  
+      // else if(getRole ===null){
+      //    this.$router.push('/admin')
+      // } 
+      // else {
+      //   alert('anda login sebagai admin')
+      // }  
     },
     methods :{
       logout(){

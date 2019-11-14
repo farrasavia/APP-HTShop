@@ -364,18 +364,15 @@ export default {
   //  },
    async  mounted(){
     let getRole = await localStorage.getItem('role');
-    if(getRole !='customer' || getRole ==='owner'){
-         this.$router.push('/owner/')
+    if(getRole =='customer'){
+         this.$router.push('/customer/katalog')
       }
-      else if(getRole !='customer' || getRole ==='admin'){
-         this.$router.push('/dashboard')
-      }
-      else if(getRole ===null){
-         this.$router.push('/')
-      }
-       else {
-        alert('anda login sebagai customer')
-      }  
+      // else if(getRole ===null){
+      //    this.$router.push('/')
+      // }
+      //  else {
+      //   alert('anda login sebagai customer')
+      // }  
     },
     methods :{
       logout(){
