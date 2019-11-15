@@ -6,7 +6,7 @@
   >
     <div id="form" class="flex flex-center" style="max-width: 300px">
       <q-card style="width:300px">
-        <q-item-label id="font" class="flex flex-center">OWNER</q-item-label>
+        <q-item-label id="font" class="flex flex-center">LOGIN OWNER</q-item-label>
       <q-form
         @submit="onSubmit"
         class="q-gutter-md"
@@ -36,7 +36,8 @@
         <div>
           <q-card-section>
           <q-btn class="full-width" color="blue-grey-10"
-          label="Login" @click="onSubmit"/>
+          @click="onSubmit()" 
+          label="Login"/>
           </q-card-section>
         </div>
       </q-form>
@@ -50,7 +51,7 @@
 <style lang="stylus">
 #font {
     font-size : 30px;
-        margin-top: 5%;
+    margin-top: 5%;
     color: #37474f
   }
 #form {
@@ -59,7 +60,8 @@
     border:15px solid #37474f;
   }
 </style>
-<script>import login_api from '../../api/Login/index';
+<script>
+import login_api from '../../api/Login/index'
 export default {
     data () {
     return {
@@ -78,9 +80,11 @@ export default {
                 if (result){
                   localStorage.setItem('email', result.email)
                   localStorage.setItem('role', result.role)
-                if(result.role=='admin'){
-                  self.$router.push('/dashboard')
-                  } else if (result.role=='owner'){
+                  
+                  console.log(localStorage.getItem('role'))
+                if(result.role=='owner'){
+                  self.$router.push('/dashown')
+                  } else if (result.role=='admin'){
                     self.$router.push('/dashboard')
                   } else {
                     self.$router.push("/customer/katalog");

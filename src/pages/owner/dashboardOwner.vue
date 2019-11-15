@@ -21,7 +21,7 @@
 <script>
     // import Chart from "./../Chart.js";
     import product from '../../api/admin/getbarang';
-    import Chart from '../../components/app/DonutChart';
+    import Chart from '../../components/app/CommitChart';
     export default {
       components: {
         Chart

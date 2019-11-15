@@ -52,6 +52,15 @@ const routes = [
      ]
   },
   {
+    path: '/dashown',
+     component: () => import('layouts/OwnerLayout.vue'),
+     children:[
+       { path:'', component: () => import('pages/owner/dashboardOwner.vue')},
+       { path: 'grafpemesanan', component: () => import('pages/owner/grafikPemesanan.vue')},
+       { path: 'aboutown', component: () => import('pages/owner/About.vue')}
+     ]
+  },
+  {
   path: '/admin',
   component: () => import('pages/admin/login.vue')
   },

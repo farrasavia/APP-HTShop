@@ -17,7 +17,6 @@
     <div id="search" style="margin-left: 10px">
             <q-input
               class="bg-white "
-              v-model="search"
               filled
               placeholder="Search">
               <template v-slot:append >
@@ -69,7 +68,6 @@
     </div>
         <div class="q-pa-lg flex flex-center">
             <q-pagination
-            v-model="current"
             color="black"
             :max="3"
             :boundary-links="true">
