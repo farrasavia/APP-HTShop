@@ -1,17 +1,18 @@
 import { getApiNoAuth } from '../utils'
 
 export default{
-    approvalFinal(window, nama_barang, tanggal, nama_pemesan, alamat_pemesan, telp_pemesan,
-        pengiriman, catatan, status, createAt){
+    approvalFinal(window, nama_barang, quantity, nama_pemesan, alamat_pemesan, telp_pemesan,
+        pengiriman, catatan, total, status, createAt){
         return getApiNoAuth()
         .post('/pemesanan_finals',{
             nama_barang:nama_barang,
-            tanggal:tanggal,
+            quantity:quantity,
             nama_pemesan:nama_pemesan,
             alamat_pemesan:alamat_pemesan,
             telp_pemesan:telp_pemesan,
             pengiriman:pengiriman,
             catatan:catatan,
+            total:total,
             status:status,
             createAt:createAt
         })   

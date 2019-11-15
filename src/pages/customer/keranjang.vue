@@ -56,19 +56,19 @@
                                             hint="Jumlah Barang" 
                                             />
                                         <q-input 
-                                            filled v-model="form.nama" 
+                                            filled v-model="form.nama_pemesan" 
                                             label="Masukkan Nama *" 
                                             hint="Nama Pemesan" 
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
                                         <q-input 
-                                            filled v-model="alamat" 
+                                            filled v-model="form.alamat_pemesan" 
                                             label="Masukkan Alamat *" 
                                             hint="Alamat Pemesan" 
                                             lazy-rules 
                                             :rules="[ val => val && val.length > 0 || 'Please type something']" />
                                         <q-input 
-                                            filled v-model="form.telepon" 
+                                            filled v-model="form.telp_pemesan" 
                                             label="Masukkan Telepon *" 
                                             hint="Telepon Pemesan" 
                                             lazy-rules 
@@ -142,114 +142,130 @@ export default {
             pemesanan:[],
             dialog: false,
             form : {
-                nama : '',
+                nama_barang:'',
                 quantity : '',
-                alamat : '',
+                nama_pemesan : '',
+                alamat_pemesan : '',
+                telp_pemesan:'',                
                 pengiriman : '',
                 catatan : '',
-                total : ''
+                total : '',
+                status : '',
+                createAt:'',
+                id:''
             },
-            columns: [
-                {
-                name: 'nama_barang',
-                required: true,
-                label: 'Nama Barang',
-                align: 'left',
-                field:row => row.nama_barang,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'tanggal',
-                required: true,
-                label: 'Tanggal',
-                align: 'left',
-                field:row => row.tanggal,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'nama_pemesan',
-                required: true,
-                label: 'Nama Pemesan',
-                align: 'left',
-                field:row => row.nama_pemesan,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'alamat_pemesan',
-                required: true,
-                label: 'Alamat',
-                align: 'left',
-                field:row => row.alamat_pemesan,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'telp_pemesan',
-                required: true,
-                label: 'Telepon',
-                align: 'left',
-                field:row => row.telp_pemesan,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'pengiriman',
-                required: true,
-                label: 'Pengiriman',
-                align: 'left',
-                field:row => row.pengiriman,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'catatan',
-                required: true,
-                label: 'Catatan',
-                align: 'left',
-                field:row => row.catatan,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'status',
-                required: true,
-                label: 'Status',
-                align: 'left',
-                field:row => row.status,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                },
-                {
-                name: 'crateAt',
-                required: true,
-                label: 'Creat At',
-                align: 'left',
-                field:row => row.creatAt,
-                format: val => `${val}`,
-                sortable: true,
-                classes:'bg-grey-2allipsis',
-                style:'max-width:100px'
-                }
-            ],
+            // columns: [
+            //     {
+            //     name: 'nama_barang',
+            //     required: true,
+            //     label: 'Nama Barang',
+            //     align: 'left',
+            //     field:row => row.nama_barang,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'quantity',
+            //     required: true,
+            //     label: 'Quantity',
+            //     align: 'left',
+            //     field:row => row.quantity,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'nama_pemesan',
+            //     required: true,
+            //     label: 'Nama Pemesan',
+            //     align: 'left',
+            //     field:row => row.nama_pemesan,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'alamat_pemesan',
+            //     required: true,
+            //     label: 'Alamat',
+            //     align: 'left',
+            //     field:row => row.alamat_pemesan,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'telp_pemesan',
+            //     required: true,
+            //     label: 'Telepon',
+            //     align: 'left',
+            //     field:row => row.telp_pemesan,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'pengiriman',
+            //     required: true,
+            //     label: 'Pengiriman',
+            //     align: 'left',
+            //     field:row => row.pengiriman,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'catatan',
+            //     required: true,
+            //     label: 'Catatan',
+            //     align: 'left',
+            //     field:row => row.catatan,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'total',
+            //     required: true,
+            //     label: 'Total',
+            //     align: 'left',
+            //     field:row => row.total,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'status',
+            //     required: true,
+            //     label: 'Status',
+            //     align: 'left',
+            //     field:row => row.status,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     },
+            //     {
+            //     name: 'crateAt',
+            //     required: true,
+            //     label: 'Creat At',
+            //     align: 'left',
+            //     field:row => row.creatAt,
+            //     format: val => `${val}`,
+            //     sortable: true,
+            //     classes:'bg-grey-2allipsis',
+            //     style:'max-width:100px'
+            //     }
+            // ],
         }
     },
     computed:{
@@ -294,9 +310,11 @@ export default {
 
         post_pemesanan(){
         const self = this
-        pemesanans.postPemesanan(window, self.nama_barang, self.quantity, self.nama_pemesan, self.alamat_pemesan, 
-        self.telp_pemesan, self.pengiriman, self.catatan,self.total, self.status, self.createAt)
+        pemesanans.postPemesanan(window, self.form.nama_barang, self.form.quantity, self.form.nama_pemesan, self.form.alamat_pemesan, 
+        self.form.telp_pemesan, self.form.pengiriman, 
+        self.form.catatan, self.form.total, 'string',self.createAt)
             .then(function (result) {
+                // self.onDelete()
                 self.$router.go('/customer/akhir')
             })
             .catch(function (err) {

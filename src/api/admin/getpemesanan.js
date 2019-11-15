@@ -1,17 +1,18 @@
 import { getApiNoAuth } from '../utils'
 
 export default {
-  postPemesanan(window, nama_barang, tanggal, nama_pemesan, alamat_pemesan, telp_pemesan,
-    pengiriman, catatan, status, createAt){
+  postPemesanan(window, nama_barang, quantity, nama_pemesan, alamat_pemesan, telp_pemesan,
+    pengiriman, catatan, total, status, createAt){
     return getApiNoAuth()
     .post('/pemesanans/' ,{
       nama_barang:nama_barang,
-      tanggal:tanggal,
+      quantity:quantity,
       nama_pemesan:nama_pemesan,
       alamat_pemesan:alamat_pemesan,
       telp_pemesan:telp_pemesan,
       pengiriman:pengiriman,
       catatan:catatan,
+      total:total,
       status:status,
       createAt:createAt
     })
@@ -32,18 +33,19 @@ export default {
         console.log(err)
       })
   },
-  putPemesanan(window, nama_barang, tanggal, nama_pemesan, alamat_pemesan, telp_pemesan,
-        pengiriman, catatan, status, createAt, id){
+  putPemesanan(window, nama_barang, quantity, nama_pemesan, alamat_pemesan, telp_pemesan,
+        pengiriman, catatan, total, status, createAt, id){
       console.log('status =',status)
         return getApiNoAuth()
         .put('/pemesanans/'+id ,{
             nama_barang:nama_barang,
-            tanggal:tanggal,
+            quantity:quantity,
             nama_pemesan:nama_pemesan,
             alamat_pemesan:alamat_pemesan,
             telp_pemesan:telp_pemesan,
             pengiriman:pengiriman,
             catatan:catatan,
+            total:total,
             status:status,
             createAt:createAt
         })

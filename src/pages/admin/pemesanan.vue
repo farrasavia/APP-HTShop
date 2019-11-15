@@ -51,11 +51,11 @@
                     </q-item-section>
 
                     <q-item-section top class="col-1 gt-xm flex flex-center">
-                    <q-item-label class="q-mt-sm flex flex-center">Catatan</q-item-label>
+                    <q-item-label class="q-mt-sm flex flex-center">Harga</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
-                    <q-item-label class="q-mt-sm flex flex-center">Status</q-item-label>
+                    <q-item-label class="q-mt-sm flex flex-center"></q-item-label>
                     </q-item-section>
                     
                 </q-item>
@@ -85,7 +85,7 @@
                     </q-item-section>
 
                     <q-item-section top class="col-1 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">{{pemesanan.catatan}}</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan.total}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section  top class="col-2 gt-xm flex flex-center">
@@ -99,12 +99,12 @@
               <div id="form" class="q-mx-auto" style="width: 600px">
                 <q-form class="q-gutter-md">
                     <q-input filled v-model="form.nama_barang" label="Nama Barang *" hint="Nama Barang" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.tanggal" label="tanggal pesan *" hint="Tanggal pesan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.createAt" label="tanggal pesan *" hint="Tanggal pesan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.nama_pemesan" label="Nama Pemesan *" hint="Nama Pemesan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.alamat_pemesan" label="alamat *" hint="alamat tujuan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.telp_pemesan" label="No.Telepon *" hint="Nomor telepon" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <q-input filled v-model="form.pengiriman" label="Kurir Pengiriman *" hint="Dikirim melalui" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
-                    <q-input filled v-model="form.catatan" label="Catatan *" hint="Catatan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
+                    <q-input filled v-model="form.total" label="Catatan *" hint="Catatan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     <!-- <q-input filled v-model="form.status" label="Status *" hint="Status pesanan" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" /> -->
                     <q-input filled v-model="form.createAt" label="tanggal dibuat *" hint="Name and surname" lazy-rules :rules="[ val => val && val.length > 0 || 'Please type something']" />
                     
@@ -156,8 +156,8 @@
                     <q-item-label class="q-mt-sm flex flex-center">Pengiriman</q-item-label>
                     </q-item-section>
 
-                    <q-item-section top class="col-1 gt-xm flex flex-center">
-                    <q-item-label class="q-mt-sm flex flex-center">Catatan</q-item-label>
+                    <q-item-section top class="col-1 gt-xm flex flex-center">   
+                    <q-item-label class="q-mt-sm flex flex-center">Harga</q-item-label>
                     </q-item-section>
 
                     <q-item-section top class="col-2 gt-xm flex flex-center">
@@ -191,7 +191,7 @@
                     </q-item-section>
 
                     <q-item-section top class="col-1 gt-xm flex flex-center">
-                        <q-item-label class="q-mt-sm">{{pemesanan_fnl1.catatan}}</q-item-label>
+                        <q-item-label class="q-mt-sm">{{pemesanan_fnl1.total}}</q-item-label>
                     </q-item-section>
 
                     <q-item-section v-if="pemesanan_fnl1.status" top class="col-2 gt-xm flex flex-center">
@@ -227,12 +227,13 @@ export default {
             dialog: false,
             form:{
                 nama_barang:'',
-                tanggal:'',
+                quantity:'',
                 nama_pemesan:'',
                 alamat_pemesan:'',
                 telp_pemesan:'',
                 pengiriman:'',
                 catatan:'',
+                total:'',
                 status:'',
                 createAt:'',
                 id:''            
@@ -250,9 +251,9 @@ export default {
                 style:'max-width:100px'
                 },
                 {
-                name: 'tanggal',
+                name: 'quantity',
                 required: true,
-                label: 'Tanggal',
+                label: 'Quantity',
                 align: 'left',
                 field:row => row.tanggal,
                 format: val => `${val}`,
@@ -316,6 +317,17 @@ export default {
                 style:'max-width:100px'
                 },
                 {
+                name: 'total',
+                required: true,
+                label: 'Total',
+                align: 'left',
+                field:row => row.total,
+                format: val => `${val}`,
+                sortable: true,
+                classes:'bg-grey-2allipsis',
+                style:'max-width:100px'
+                },
+                {
                 name: 'status',
                 required: true,
                 label: 'Status',
@@ -364,9 +376,10 @@ export default {
             const self = this
 
 
-            approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
-                self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-                self.form.catatan, true, self.form.createAt, self.form.id)
+            approval.approvalFinal(window, self.form.nama_barang, self.form.quantity,
+                self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, 
+                self.form.pengiriman, self.form.catatan, self.form.total, true, self.form.createAt, 
+                self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
@@ -374,9 +387,10 @@ export default {
             .catch(function (err) {
                 console.log(err);
             });
-            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.tanggal,
-            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-            self.form.catatan, 'approve', self.form.createAt, self.form.id)
+            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.quantity, 
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, 
+            self.form.pengiriman, self.form.catatan, self.form.total, 'approve', self.form.createAt, 
+            self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
@@ -391,9 +405,10 @@ export default {
             const self = this
 
 
-            approval.approvalFinal(window, self.form.nama_barang, self.form.tanggal,
-            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-            self.form.catatan, false, self.form.createAt, self.form.id)
+            approval.approvalFinal(window, self.form.nama_barang, self.form.quantity,
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, 
+            self.form.pengiriman, self.form.catatan, self.form.total, false, self.form.createAt, 
+            self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
@@ -402,9 +417,10 @@ export default {
                 console.log(err);
             });
 
-            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.tanggal,
-            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, self.form.pengiriman,
-            self.form.catatan, 'reject', self.form.createAt, self.form.id)
+            pemesanaan.putPemesanan(window, self.form.nama_barang, self.form.quantity,
+            self.form.nama_pemesan, self.form.alamat_pemesan, self.form.telp_pemesan, 
+            self.form.pengiriman, self.form.catatan, self.form.total, 'reject', self.form.createAt, 
+            self.form.id)
             .then(function (result) {
                 self.$router.go('/dashboard/pemesanan')
                 console.log(result)
@@ -419,12 +435,13 @@ export default {
         this.updateSubmit = true
         this.form.id = pemesanan.id
         this.form.nama_barang = pemesanan.nama_barang
-        this.form.tanggal = pemesanan.tanggal
+        this.form.quantity = pemesanan.quantity
         this.form.nama_pemesan = pemesanan.nama_pemesan
         this.form.alamat_pemesan = pemesanan.alamat_pemesan
         this.form.telp_pemesan = pemesanan.telp_pemesan
         this.form.pengiriman = pemesanan.pengiriman
         this.form.catatan = pemesanan.catatan
+        this.form.total = pemesanan.total
         this.form.status = pemesanan.status
         this.form.createAt = pemesanan.createAt
       }
