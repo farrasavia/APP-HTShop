@@ -1,22 +1,41 @@
 import {
-    Bar
-  }
-  from 'vue-chartjs'
-  
-  export default {
-    extends: Bar,
-    props: ['data'],
-    mounted: function () {
-      this.renderChart(this.data, this.options)
-    },
-    data () {
+  Line,
+  Bar,
+  mixins
+} from 'vue-chartjs'
+
+export default {
+  extends: Bar,
+  mixins: [mixins.reactiveProp],
+  props: ['chartData', 'options'],
+  data() {
       return {
-        options: {
-          title: {
-            display: true,
-            text: 'Grafik Pemesanan'
+          options: { //Chart.js options
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      },
+                      gridLines: {
+                          display: true
+                      }
+                  }],
+                  xAxes: [{
+                      gridLines: {
+                          display: false
+                      }
+                  }]
+              },
+              legend: {
+                  display: true
+              },
+              responsive: true,
+              maintainAspectRatio: false
           }
-        }
       }
-    }
+  },
+  mounted() {
+      this.renderChart(this.chartdata, this.options)
   }
+
+}

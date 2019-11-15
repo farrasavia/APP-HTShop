@@ -1,22 +1,41 @@
 import {
-    Pie
-  }
-  from 'vue-chartjs'
-  
-  export default {
-    extends: Pie,
-    props: ['data'],
-    mounted: function () {
-      this.renderChart(this.data, this.options)
-    },
-    data () {
+  Line,
+  Pie,
+  mixins
+} from 'vue-chartjs'
+
+export default {
+  extends: Pie,
+  mixins: [mixins.reactiveProp],
+  props: ['chartData', 'options'],
+  data() {
       return {
-        options: {
-          title: {
-            display: true,
-            text: 'Grafik Pengunjung'
+          options: { //Chart.js options
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      },
+                      gridLines: {
+                          display: true
+                      }
+                  }],
+                  xAxes: [{
+                      gridLines: {
+                          display: false
+                      }
+                  }]
+              },
+              legend: {
+                  display: true
+              },
+              responsive: true,
+              maintainAspectRatio: false
           }
-        }
       }
-    }
+  },
+  mounted() {
+      this.renderChart(this.chartdata, this.options)
   }
+
+}

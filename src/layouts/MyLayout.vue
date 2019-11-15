@@ -299,7 +299,7 @@
          </div>
         </div>
 
-          <div class="column" style="240px">
+          <div class="column">
             <div class="row">
               <div class="col-1 q-gutter-xl "/>
               <div class="col1">

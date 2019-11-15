@@ -290,7 +290,7 @@
          <div class="row" style="height: 100px">
           <div class="col-1 q-gutter-xl "/>
           <div class="col-10">
-            <div class="column" style="100px">
+            <div class="column">
               <div class="col-1">
                 <div class="text-left text-overline">Kenali kami lebih baik dengan mengikuti pegangan media</div>
                 <div class="text-left text-overline">sosial kami!</div>
@@ -299,7 +299,7 @@
          </div>
         </div>
 
-          <div class="column" style="240px">
+          <div class="column">
             <div class="row">
               <div class="col-1 q-gutter-xl "/>
               <div class="col1">
@@ -307,8 +307,6 @@
               </div>
               <div class="col-10"/>
               <div class="col-auto justify-end">
-                <q-img src="./statics/master.png" style="width:30px"/>
-                <q-img src="./statics/visa.png" style="width:30px"/>
               </div>
             </div>
           </div>
