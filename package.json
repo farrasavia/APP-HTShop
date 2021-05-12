@@ -13,7 +13,7 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
-    "chart.js": "^2.9.2",
+    "chart.js": "^2.9.4",
     "chartjs": "^0.3.24",
     "quasar": "^1.0.0",
     "vue-chartjs": "^3.5.0",
